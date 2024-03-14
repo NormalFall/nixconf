@@ -8,12 +8,15 @@ in
 
   imports = [
     (Modules + "/NetworkTools")
+    (Modules + "/Gaming")
   ];
 
   networkTools = {
     enable = true;
     exclude = [ pkgs.postman ];
   };
+
+  gaming.enable = true;
   
   home.packages = with pkgs; [
     lolcat
