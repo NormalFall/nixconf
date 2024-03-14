@@ -70,6 +70,6 @@ with lib; {
   };
 
   config = {
-    home.packages = lists.removePrefix cfg.exclude (if cfg.allowUnfree then (freePkgs ++ unfreePkgs) else freePkgs); 
+    home.packages = lists.subtractLists cfg.exclude (if cfg.allowUnfree then (freePkgs ++ unfreePkgs) else freePkgs); 
   };
 }
