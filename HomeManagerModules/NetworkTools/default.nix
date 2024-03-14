@@ -23,7 +23,7 @@ let
     ];
   };
 
-  reversePkgs = {
+  sniffPkgs = {
     free = with pkgs; [
       wireshark
     ];
@@ -31,27 +31,24 @@ let
     unfree = [];
   };
 
-  freePkgs = (basicPkgs.free ++ apiPkgs.free ++ reversePkgs.free);
-  unfreePkgs = (basicPkgs.unfree ++ apiPkgs.unfree ++ reversePkgs.unfree);
-
 in
 with lib; {
   options.networkTools = {
     enable = mkEnableOption "Gives a usefull list of networking tools";
     
-    basic.enable = mkOption {
+    basic = mkOption {
         default = true;
 	type = types.bool;
 	description = "Gives basic tools to manage networks";
     };
 
-    api.enable = mkOption {
+    api = mkOption {
         default = true;
 	type = types.bool;
 	description = "Tools to reverse engineer APIs";
     };
 
-    reverse.enable = mkOption {
+    sniff = mkOption {
       default = true;
       type = types.bool;
       description = "Advanced tool to check network traffic";
@@ -69,7 +66,14 @@ with lib; {
     };
   };
 
-  config = {
-    home.packages = lists.subtractLists cfg.exclude (if cfg.allowUnfree then (freePkgs ++ unfreePkgs) else freePkgs); 
+  config = mkIf cfg.enable {
+    home.packages = lists.subtractLists cfg.exclude (
+      (if cfg.basic then 
+        (if cfg.allowUnfree then basicPkgs.unfree else []) ++ basicPkgs.free else [])
+      ++ (if cfg.api then 
+           (if cfg.allowUnfree then apiPkgs.unfree else []) ++ apiPkgs.free else [])
+      ++ (if cfg.sniff then 
+           (if cfg.allowUnfree then sniffPkgs.unfree else []) ++ sniffPkgs.free else [])
+    );
   };
 }
