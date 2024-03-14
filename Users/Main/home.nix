@@ -1,11 +1,20 @@
 { config, pkgs, userName, ... }:
-
+let
+  Modules = ../../HomeManagerModules;
+in
 {
   home.username = userName;
   home.homeDirectory = "/home/${userName}";
 
-  home.stateVersion = "23.11"; # Please read the comment before changing.
+  imports = [
+    (Modules + "/NetworkTools")
+  ];
 
+  networkTools = {
+    enable = true;
+    exclude = [ pkgs.postman ];
+  };
+  
   home.packages = with pkgs; [
     lolcat
   ];
@@ -24,6 +33,8 @@
     EDITOR = "nvim";
   };
 
+  nixpkgs.config.allowUnfree = true;
+  home.stateVersion = "23.11"; # Please read the comment before changing.
   programs.home-manager.enable = true;
 }
 
