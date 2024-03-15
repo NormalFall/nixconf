@@ -26,15 +26,7 @@ in
 
     niceSettings.enable = true;
   
-    kde = {
-      enable = true;
-      sddm = false;
-    };
-
-    greetd = {
-      enable = true;
-      command = "startplasma-wayland";
-    };
+    kde.enable = true;
 
     basePkgs.enable = true;
 
