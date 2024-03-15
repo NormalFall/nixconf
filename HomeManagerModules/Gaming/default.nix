@@ -10,17 +10,22 @@ let
 
   emulatorPkgs = {
     cores = with pkgs.libretro; [
+      # Nintendo
       melonds
+      bsnes
       mgba
-      snes9x
       nestopia
       parallel-n64
-      pcsx2
+      sameboy
+      dolphin
+
+      # Sega
+      picodrive
+      genesis-plus-gx
     ];
 
     standalone = with pkgs; [
       ryujinx
-      dolphin-emu
     ];
   };
 in
@@ -61,7 +66,7 @@ with lib; {
   config = mkIf cfg.enable {
     home.packages = 
       (if cfg.emulation.enable then (emulatorPkgs.standalone 
-      ++ (if cfg.emulation.retroarch.enable then (cfg.emulation.retroarch.extraCores ++ emulatorPkgs.cores ++ [ pkgs.retroarch ]) else [])) else [])
+      ++ (if cfg.emulation.retroarch.enable then [ (pkgs.retroarch.override { cores = [] ++ (cfg.emulation.retroarch.extraCores ++ emulatorPkgs.cores); }) ] else [])) else [])
       ++ (if cfg.steamExtra then steamExtraPkgs else [])
       ++ (if cfg.osu then [ inputs.nix-gaming.packages.${pkgs.system}.osu-lazer-bin ] else []);
   };
