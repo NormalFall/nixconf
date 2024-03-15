@@ -2,7 +2,7 @@
 let
   mainUser = "normal";
   Modules = ../../Modules;
-  Bundles = Modules + "/bundles";
+  Bundles = Modules + "/Bundles";
 in
   {
     imports =
@@ -13,7 +13,7 @@ in
         (Bundles + /BasePackages.nix)
 	(Modules + /Greetd)
 	(Bundles + /NiceSettings.nix)
-	(Modules + /Main-user)
+	(Modules + /MainUser)
       ];
   
     boot.loader.grub.enable = true;
@@ -30,9 +30,12 @@ in
 
     basePkgs.enable = true;
 
-    main-user = {
+    mainUser = {
       enable = true;
-      home-manager = true;
+      homeManager = {
+        enable = true;
+	config = ./home.nix;
+      };
       userName = mainUser;
     };
 

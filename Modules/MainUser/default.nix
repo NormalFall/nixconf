@@ -1,13 +1,18 @@
 { lib, config, pkgs, inputs, ... }:
 
 let
-  cfg = config.main-user;
+  cfg = config.mainUser;
 in
 with lib; {
-  options.main-user = {
+  options.mainUser = {
     enable = mkEnableOption "enable user module";
 
-    home-manager = mkEnableOption "enables home-manager for main user";
+    homeManager = {
+      enable = mkEnableOption "enables home-manager for main user";
+      config = mkOption {
+	description = "location of your home.nix";
+      };
+    };
 
     shell = mkOption {
       default = "zsh";
@@ -30,13 +35,13 @@ with lib; {
       shell = pkgs.${cfg.shell};
     };
 
-    home-manager = mkIf cfg.home-manager {
+    home-manager = mkIf cfg.homeManager.enable {
       extraSpecialArgs = {
         inherit (cfg) userName;
         inherit inputs;
       };
 
-      users.${cfg.userName} = import ../../Users/Main/home.nix;
+      users.${cfg.userName} = cfg.homeManager.config;
     };
   };
 }
