@@ -33,6 +33,10 @@ with lib; {
   options.gaming = {
     enable = mkEnableOption "Enable gaming module";
 
+    steam.enable = mkOption {
+      default = true;
+    };
+
     steamExtra = mkOption {
         default = true;
 	description = "Enables Steam";
@@ -68,6 +72,7 @@ with lib; {
       (if cfg.emulation.enable then (emulatorPkgs.standalone 
       ++ (if cfg.emulation.retroarch.enable then [ (pkgs.retroarch.override { cores = [] ++ (cfg.emulation.retroarch.extraCores ++ emulatorPkgs.cores); }) ] else [])) else [])
       ++ (if cfg.steamExtra then steamExtraPkgs else [])
-      ++ (if cfg.osu then [ inputs.nix-gaming.packages.${pkgs.system}.osu-lazer-bin ] else []);
+      ++ (if cfg.osu then [ inputs.nix-gaming.packages.${pkgs.system}.osu-lazer-bin ] else [])
+      ++ (if cfg.steam.enable then [ pkgs.steam ] else []);
   };
 }
