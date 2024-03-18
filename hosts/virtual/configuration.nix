@@ -14,6 +14,7 @@ in
 	(Modules + /Greetd)
 	(Bundles + /NiceSettings.nix)
 	(Modules + /MainUser)
+	(Modules + /Gaming)
       ];
   
     boot.loader.grub.enable = true;
@@ -28,7 +29,15 @@ in
   
     kde.enable = true;
 
+    greetd = {
+      enable = true;
+      command = "startplasma-wayland";
+      greeter = "tuigreet";
+    };
+
     basePkgs.enable = true;
+
+    gaming.enable = true;
 
     mainUser = {
       enable = true;
