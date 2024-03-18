@@ -7,9 +7,9 @@ in
   home.homeDirectory = "/home/${userName}";
 
   imports = [
-    (Modules + "/NetworkTools")
-    (Modules + "/Gaming")
-    (Modules + /Hyprland)
+    (Modules + /NetworkTools)
+    (Modules + /Gaming)
+    (Modules + /WindowManager/Hyprland)
   ];
 
   hyprland.enable = true;
