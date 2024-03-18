@@ -21,7 +21,7 @@ with lib; {
     services.greetd = {
       enable = true;
     
-      settings.default_session.command = "${pkgs.greetd.greetd}/bin/${cfg.greeter} --cmd ${cfg.command}";
+      settings.default_session.command = "${pkgs.greetd.${cfg.greeter}}/bin/${cfg.greeter} --cmd ${cfg.command}";
     };
   };
 }
