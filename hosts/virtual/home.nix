@@ -8,7 +8,6 @@ in
 
   imports = [
     (Modules + /NetworkTools)
-    (Modules + /Gaming)
     (Modules + /WindowManager/Hyprland)
   ];
 
@@ -18,8 +17,6 @@ in
     enable = true;
     exclude = [ pkgs.postman ];
   };
-
-  gaming.enable = true;
   
 
   home.file = {

@@ -14,7 +14,6 @@ in
 	(Modules + /Greetd)
 	(Bundles + /NiceSettings.nix)
 	(Modules + /MainUser)
-	(Modules + /Gaming)
       ];
   
     boot.loader.grub.enable = true;
@@ -36,8 +35,6 @@ in
     };
 
     basePkgs.enable = true;
-
-    gaming.enable = true;
 
     mainUser = {
       enable = true;
