@@ -9,7 +9,10 @@ in
   imports = [
     (Modules + "/NetworkTools")
     (Modules + "/Gaming")
+    (Modules + /Hyprland)
   ];
+
+  hyprland.enable = true;
 
   networkTools = {
     enable = true;
@@ -18,9 +21,6 @@ in
 
   gaming.enable = true;
   
-  home.packages = with pkgs; [
-    lolcat
-  ];
 
   home.file = {
     # ".screenrc".source = dotfiles/screenrc;
