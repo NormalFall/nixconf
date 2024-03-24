@@ -8,9 +8,10 @@ in
     imports =
       [ 
         ./hardware-configuration.nix
-	(Modules + "/Kde")
+	(Modules + /Kde)
 	(Modules + /Syncthing)
         (Bundles + /BasePackages.nix)
+        (Bundles + /Fonts.nix)
 	(Modules + /Greetd)
 	(Bundles + /NiceSettings.nix)
 	(Modules + /MainUser)
