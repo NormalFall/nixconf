@@ -13,9 +13,5 @@ with lib; {
     i18n.defaultLocale = "en_CA.UTF-8";
 
     programs.mtr.enable = true;
-    programs.gnupg.agent = {
-      enable = true;
-      enableSSHSupport = true;
-    };
   };
 }
