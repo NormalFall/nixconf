@@ -9,9 +9,12 @@ in
   imports = [
     (Modules + /NetworkTools)
     (Modules + /WindowManager/Hyprland)
+    (Modules + /Terminal/Nixvim)
   ];
 
   hyprland.enable = true;
+
+  nixvim.enable = true;
 
   networkTools = {
     enable = true;
