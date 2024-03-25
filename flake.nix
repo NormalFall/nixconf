@@ -42,10 +42,10 @@
           ];
         };
 
-        desktop = nixpkgs.lib.nixosSystem {
+        laptop = nixpkgs.lib.nixosSystem {
           specialArgs = {inherit inputs;};
           modules = [
-            ./hosts/desktop/configuration.nix
+            ./hosts/laptop/configuration.nix
             inputs.home-manager.nixosModules.default
           ];
         };
