@@ -3,22 +3,60 @@ let
   cfg = config.hyprland;
 
   binds = (import ./keybinds.nix) pkgs;
-in
-with lib; {
 
-  imports = [ 
-    inputs.hyprland.homeManagerModules.default
-  ];
-
-  options.hyprland = {
+  options.hyprland = with lib; {
     enable = mkEnableOption "Enables Hyprland's ecosystem";
     monitors = mkOption {
       default = [ ",preferred,auto,1" ];
       description = "Setup your monitors";
     };
+
+    fakeres = mkOption {
+      default = false;
+      description = "Enables neirestNeibour ";
+    };
+
+    cursor = {
+      size = mkOption {
+        default = 24;
+        description = "Cursor size";
+      };
+    };
+
+    theme = mkOption {
+      default = "default";
+      description = "Hyprland Theme";
+    };
+
+    themeData = import (./Themes + "/${cfg.theme}.nix");
+
+    touchScreen = mkEnableOption "Enables or disables touchscreens";
   };
 
+  theme = import (./Themes + "/${cfg.theme}.nix");
+in
+  with lib; {
+    
+  inherit options;
+
+  imports = [ 
+    inputs.hyprland.homeManagerModules.default
+  ];
+
   config = mkIf cfg.enable {
+    xdg.portal= {
+      enable = true;
+      extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
+      config.common.default = "*";
+    };
+
+    home.pointerCursor = {
+      gtk.enable = true;
+      size = cfg.cursor.size;
+      package = pkgs.bibata-cursors;
+      name = "Bibata-Modern-Ice";
+    };
+
     wayland.windowManager.hyprland = {
       enable = true;
       settings = {
@@ -27,33 +65,20 @@ with lib; {
         bind = binds.key;
 	bindm = binds.mouse;
 
-	general = {
+        input.touchdevice.enabled = cfg.touchScreen;
+        
+        env = [
+          "HYPRCURSOR_SIZE,${builtins.toString (cfg.cursor.size / 1.2)}"
+        ];
+
+        xwayland.force_zero_scaling = !cfg.fakeres;
+
+	general = ( theme.general // {
 	  sensitivity = 1;
+        });
 
-	  gaps_in = 11;
-	  gaps_out = 15;
-          border_size = 2;
-	};
-
-	decoration = {
-	  rounding = 15;
-	  blur.enabled = true;
-	};
-
-	animations = {
-	  enabled = true;
-
-	  bezier = [
-	    "Overshoot, 0.05, 0.9, 0.1, 0.1"
-	  ];
-
-	  animation = [
-            "windows, 1, 5, Overshoot, slide"
-            "windowsOut, 1, 7, Overshoot, popin 80%"
-	    "workspaces, 1, 6, Overshoot, slidevert"
-	  ];
-	};
-
+        decoration = theme.decoration;
+        animations = theme.animations;
       };
     };
   };
