@@ -5,7 +5,6 @@ let
   steamExtraPkgs = with pkgs; [
     gamescope
     mangohud
-    inputs.nix-gaming.packages.${pkgs.system}.proton-ge
   ];
 
   emulatorPkgs = {
