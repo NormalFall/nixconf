@@ -24,7 +24,7 @@ with lib; {
         {
           action = ":w<CR>";
 	  key = "<S-w>";
-	  mode = [ "t" "n" ];
+	  mode = [ "n" ];
 	  options = {
 	    silent = true;
 	  };
@@ -40,7 +40,7 @@ with lib; {
         # Floaterm
         {
           action = "<C-\\><C-n>:ToggleTerm<CR>";
-	  key = "<C-_>";
+	  key = "<C-/>";
 	  mode = [ "t" "n" ];
 	  options = {
 	    silent = true;
