@@ -13,6 +13,8 @@ with lib; {
       git
       gdu
       firefox
+      btop
+      killall
     ];
   };
 }
