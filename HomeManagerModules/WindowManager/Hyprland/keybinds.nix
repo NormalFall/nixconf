@@ -5,7 +5,7 @@
     ];
 
     key = [
-      "SUPER,T,exec,kitty"
+      "SUPER,T,exec,${pkgs.kitty}/bin/kitty"
       "SUPER,C,killactive,"
       "SUPERSHIFT,M,exit,"
       "SUPER,Q,exec,thunar"
