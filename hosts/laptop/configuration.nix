@@ -26,9 +26,6 @@ in
       grub = {
         efiSupport = true;
         device = "nodev";
-        gfxmodeEfi = "1200x750";
-        font = "${pkgs.hack-font}/share/fonts/hack/Hack-Regular.ttf";
-        fontSize = 36;
       };
     };
 
@@ -59,6 +56,8 @@ in
       };
       userName = mainUser;
     };
-  
+
+    environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
     system.stateVersion = "23.11"; 
   }
