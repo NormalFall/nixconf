@@ -17,7 +17,7 @@ in
 
   hyprland = {
     enable = true;
-    monitors = [ "eDP-1, 2880x1800@90,0x0,1.6" ];
+    monitors = [ "eDP-1, 2880x1800@90,0x0,1.5" ];
     cursor.size = 30;
   };
 
