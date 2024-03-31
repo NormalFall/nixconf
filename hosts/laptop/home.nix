@@ -11,6 +11,8 @@ in
     (Modules + /Gaming)
     (Modules + /WindowManager/Hyprland)
     (Modules + /Terminal/Nixvim)
+    (Modules + /Terminal/Zsh)
+    (Modules + /Terminal/Kitty)
   ];
 
   hyprland = {
@@ -18,6 +20,15 @@ in
     monitors = [ "eDP-1, 2880x1800@90,0x0,1.6" ];
     cursor.size = 30;
   };
+
+  zsh = {
+    enable = true;
+    host = "laptop";
+    theme = "agnoster";
+  };
+
+  kitty.enable = true;
+  kitty.opacity = 0.1;
 
   nixvim.enable = true;
 
