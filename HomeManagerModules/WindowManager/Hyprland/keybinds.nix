@@ -22,6 +22,10 @@
       ",XF86AudioRaiseVolume,exec, ${pkgs.pamixer}/bin/pamixer -i 5"
       "ALT,F9,exec,${pkgs.playerctl}/bin/playerctl previous"
       "ALT,F10,exec,${pkgs.playerctl}/bin/playerctl next"
+
+      #Brightness
+      ",XF86MonBrightnessDown,exec,${pkgs.brightnessctl}/bin/brightnessctl s 10%-"
+      ",XF86MonBrightnessUp,exec,${pkgs.brightnessctl}/bin/brightnessctl s +10%"
       
       #Aim Focus
       "SUPER,left,movefocus,l"
