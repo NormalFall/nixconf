@@ -10,7 +10,7 @@ with lib; {
     programs.nixvim = {
       enable = true;
 
-      options = {
+      opts = {
         number = true;
         relativenumber = true;
 
