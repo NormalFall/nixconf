@@ -36,6 +36,11 @@ with lib; {
       default = true;
     };
 
+    r2modman = mkOption {
+      default = true;
+      description = "r2modman";
+    };
+
     steamExtra = mkOption {
         default = true;
 	description = "Enables Steam";
@@ -64,14 +69,28 @@ with lib; {
       default = true;
       description = "install Osu-lazer-bin";
     };
+
+    minecraft = mkOption {
+      default = true;
+      description = "install prismlauncher";
+    };
+
+    lutris = mkOption {
+      default = true;
+      description = "install lutris";
+    };
   };
 
   config = mkIf cfg.enable {
     home.packages = 
       (if cfg.emulation.enable then (emulatorPkgs.standalone 
       ++ (if cfg.emulation.retroarch.enable then [ (pkgs.retroarch.override { cores = [] ++ (cfg.emulation.retroarch.extraCores ++ emulatorPkgs.cores); }) ] else [])) else [])
-      ++ (if cfg.steamExtra then steamExtraPkgs else [])
+      ++ (if cfg.steam.enable then [ inputs.ssbm-nix.packages.${pkgs.system}.slippi-playback ] else [])
       ++ (if cfg.osu then [ inputs.nix-gaming.packages.${pkgs.system}.osu-lazer-bin ] else [])
-      ++ (if cfg.steam.enable then [ pkgs.steam ] else []);
+      ++ (if cfg.minecraft then [ pkgs.prismlauncher ] else [])
+      ++ (if cfg.lutris then [ pkgs.lutris ] else [])
+      ++ (if cfg.steamExtra then steamExtraPkgs else [])
+      ++ (if cfg.steam.enable then [ pkgs.steam ] else [])
+      ++ (if cfg.r2modman then [ pkgs.r2modman ] else []);
   };
 }
