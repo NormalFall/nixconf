@@ -85,7 +85,6 @@ with lib; {
     home.packages = 
       (if cfg.emulation.enable then (emulatorPkgs.standalone 
       ++ (if cfg.emulation.retroarch.enable then [ (pkgs.retroarch.override { cores = [] ++ (cfg.emulation.retroarch.extraCores ++ emulatorPkgs.cores); }) ] else [])) else [])
-      ++ (if cfg.steam.enable then [ inputs.ssbm-nix.packages.${pkgs.system}.slippi-playback ] else [])
       ++ (if cfg.osu then [ inputs.nix-gaming.packages.${pkgs.system}.osu-lazer-bin ] else [])
       ++ (if cfg.minecraft then [ pkgs.prismlauncher ] else [])
       ++ (if cfg.lutris then [ pkgs.lutris ] else [])
