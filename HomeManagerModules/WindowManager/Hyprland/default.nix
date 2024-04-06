@@ -13,7 +13,12 @@ let
 
     fakeres = mkOption {
       default = false;
-      description = "Enables neirestNeibour ";
+      description = "Enables neirestNeibour";
+    };
+
+    gdkScale = mkOption {
+      default = 1;
+      description = "Changes the GDK_SCALE value";
     };
 
     cursor = {
@@ -46,10 +51,12 @@ in
   config = mkIf cfg.enable {
     xdg.portal= {
       enable = true;
-      extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
-      config.common.default = "*";
-    };
+      extraPortals = [ pkgs.xdg-desktop-portal-wlr pkgs.xdg-desktop-portal-gtk ];
 
+      config = {
+        common.default = ["gtk" "wlr"];
+      };
+    };
     home.pointerCursor = {
       gtk.enable = true;
       size = cfg.cursor.size;
@@ -68,7 +75,8 @@ in
         input.touchdevice.enabled = cfg.touchScreen;
         
         env = [
-          "HYPRCURSOR_SIZE,${builtins.toString (cfg.cursor.size / 1.2)}"
+          "HYPRCURSOR_SIZE,${builtins.toString cfg.cursor.size}"
+          "GDK_SCALE,${builtins.toString cfg.gdkScale}"
         ];
 
         xwayland.force_zero_scaling = !cfg.fakeres;
