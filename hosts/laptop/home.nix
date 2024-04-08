@@ -7,17 +7,21 @@ in
   home.homeDirectory = "/home/${userName}";
 
   imports = [
-    (Modules + /NetworkTools)
+    (Modules + /Dev/NetworkTools)
     (Modules + /Gaming)
     (Modules + /WindowManager/Hyprland)
     (Modules + /Terminal/Nixvim)
     (Modules + /Terminal/Zsh)
     (Modules + /Terminal/Kitty)
+    (Modules + /Apps/Media)
+    (Modules + /Apps/Spotify)
+    (Modules + /Apps/Discord)
   ];
 
   hyprland = {
     enable = true;
     monitors = [ "eDP-1, 2880x1800@90,0x0,1.5" ];
+    gdkScale = 1.5;
     cursor.size = 30;
   };
 
@@ -27,6 +31,12 @@ in
     theme = "agnoster";
   };
 
+  media.enable = true;
+  media.editors = true;
+
+  spotify.enable = true;
+  discord.enable = true;
+  
   kitty.enable = true;
   kitty.opacity = 0.1;
 
