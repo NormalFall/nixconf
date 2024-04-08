@@ -40,6 +40,11 @@
     driSupport32Bit = true;
   };
 
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+  };
+
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   nixpkgs.config.allowBroken = true;
