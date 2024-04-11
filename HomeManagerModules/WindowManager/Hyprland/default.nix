@@ -28,17 +28,23 @@ let
       };
     };
 
-    theme = mkOption {
-      default = "default";
-      description = "Hyprland Theme";
+    exec = mkOption {
+      default = [];
+      description = "Basicly exec-once";
     };
 
-    themeData = import (./Themes + "/${cfg.theme}.nix");
+    theme = mkOption {
+      default = null;
+      description = "Hyprland Theme";
+    };
 
     touchScreen = mkEnableOption "Enables or disables touchscreens";
   };
 
-  theme = import (./Themes + "/${cfg.theme}.nix");
+  theme = if !(builtins.isNull cfg.theme) then 
+    import (./Themes + "/${cfg.theme}.nix")
+  else
+    { general = {}; animations = {}; decoration = {}; };
 in
   with lib; {
     
@@ -51,10 +57,10 @@ in
   config = mkIf cfg.enable {
     xdg.portal= {
       enable = true;
-      extraPortals = [ pkgs.xdg-desktop-portal-wlr pkgs.xdg-desktop-portal-gtk ];
+      extraPortals = [ pkgs.xdg-desktop-portal-hyprland pkgs.xdg-desktop-portal-gtk ];
 
       config = {
-        common.default = ["gtk" "wlr"];
+        common.default = ["gtk" "hyprland"];
       };
     };
     home.pointerCursor = {
@@ -72,10 +78,12 @@ in
         bind = binds.key;
 	bindm = binds.mouse;
 
+        exec-once = cfg.exec;
+
         input.touchdevice.enabled = cfg.touchScreen;
         
         env = [
-          "HYPRCURSOR_SIZE,${builtins.toString cfg.cursor.size}"
+          "HYPRCURSOR_SIZE,${builtins.toString (builtins.toString (cfg.cursor.size))}"
           "GDK_SCALE,${builtins.toString cfg.gdkScale}"
         ];
 
