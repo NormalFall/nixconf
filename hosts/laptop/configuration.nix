@@ -8,7 +8,6 @@ in
     imports =
       [ 
         ./hardware-configuration.nix
-	(Modules + /Syncthing)
 	(Modules + /Pipewire)
         (Modules + /Gaming)
         (Bundles + /BasePackages.nix)
@@ -16,6 +15,7 @@ in
 	(Modules + /Greetd)
 	(Bundles + /NiceSettings.nix)
 	(Modules + /MainUser)
+        (Modules + /Drivers)
       ];
   
     boot.loader = {
@@ -35,6 +35,9 @@ in
       hostName = "NixfoSum";
       networkmanager.enable = true;
     };
+
+    drivers.laptop.enable = true;
+    drivers.logitech.enable = true;
 
     niceSettings.enable = true;
 
