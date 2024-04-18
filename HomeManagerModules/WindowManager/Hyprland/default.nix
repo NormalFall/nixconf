@@ -62,7 +62,7 @@ let
     };
     
     theme = mkOption {
-      default = null;
+      default = {};
       description = "Hyprland and hyprlock theme";
     };
   };
@@ -84,6 +84,7 @@ in
   ];
 
   config = mkIf cfg.enable {
+    home.packages = [ pkgs.xdg-utils ];
     xdg.portal= {
       enable = true;
       extraPortals = [ pkgs.xdg-desktop-portal-hyprland pkgs.xdg-desktop-portal-gtk ];
@@ -92,7 +93,7 @@ in
         common.default = ["gtk" "hyprland"];
       };
     };
-
+    
     home.pointerCursor = {
       gtk.enable = true;
       size = cfg.cursor.size;
