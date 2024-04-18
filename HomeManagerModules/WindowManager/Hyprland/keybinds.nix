@@ -8,7 +8,7 @@
       "SUPER,T,exec,${pkgs.kitty}/bin/kitty"
       "SUPER,C,killactive,"
       "SUPERSHIFT,M,exit,"
-      "SUPER,Q,exec,thunar"
+      "SUPER,Q,exec,${pkgs.xfce.thunar}/bin/thunar"
       "SUPER,V,togglefloating,"
       "SUPERSHIFT,V,pin,"
       "SUPER,R,exec, ${pkgs.rofi-wayland}/bin/rofi -show drun"
@@ -16,6 +16,8 @@
       "SUPER,A,exec, ${pkgs.libnotify}/bin/notify-send $(${pkgs.hyprpicker}/bin/hyprpicker)"
       "SUPER,F,fullscreen,0"
       "SUPERSHIFT,F,fullscreen,1"
+      "SUPER,S,exec,${pkgs.grimblast}/bin/grimblast copy screen"
+      "SUPERSHIFT,S,exec,${pkgs.grimblast}/bin/grimblast copy area"
       
       #Audio
       ",XF86AudioLowerVolume,exec,${pkgs.pamixer}/bin/pamixer -d 5"
