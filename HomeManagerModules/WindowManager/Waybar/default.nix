@@ -1,13 +1,14 @@
 {lib, config, pkgs, ...}:
 let
   cfg = config.waybar;
-  cfgDir = ".config/waybar";
+  cfgDir = "~/.config/waybar";
 in
 with lib; {
   options.waybar = {
     enable = mkEnableOption "Enables waybar";
-    configuration = mkOption {
-      default = ./config;
+
+    config = mkOption {
+      default = null;
       description = "config.jsonc configuaration file";
     };
 
@@ -33,11 +34,11 @@ with lib; {
   };
 
   config = mkIf cfg.enable {
-    home.packages = [pkgs.waybar] ++ cfg.deps;
-    home.file = if !(cfg.configuration == null || cfg.style == null) then {
-      ${cfgDir + "/config"}.source = cfg.configuration;
-      ${cfgDir + "/style.css"}.text = 
-        (builtins.readFile cfg.style) + (if colors != null then ("\n" + (builtins.readFile cfg.colors)) else "");
-    } // (if (cfg.scripts != null) then { ${cfgDir + "config"}.source = cfg.scripts; } else {}) else {};
+    home.packages = [ pkgs.waybar ] ++ cfg.deps;
+    home.file = if (cfg.config != null && cfg.style != null) then {
+      ".config/waybar/config".source = cfg.config;
+      ".config/waybar/style.css".text = 
+        (builtins.readFile cfg.style) + (if cfg.colors != null then ("\n" + (builtins.readFile cfg.colors)) else "");
+    } // (if (cfg.scripts != null) then { ${cfgDir + "/scripts"}.source = cfg.scripts; } else {}) else {};
   };
 }
