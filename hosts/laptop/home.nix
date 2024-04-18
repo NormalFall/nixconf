@@ -7,38 +7,48 @@ in
   home.homeDirectory = "/home/${userName}";
 
   imports = [
+    (Modules + /Themes/Default)
     (Modules + /Dev/NetworkTools)
     (Modules + /Gaming)
     (Modules + /WindowManager/Hyprland)
+    (Modules + /WindowManager/Waybar)
     (Modules + /Terminal/Nixvim)
     (Modules + /Terminal/Zsh)
     (Modules + /Terminal/Kitty)
+    (Modules + /School)
     (Modules + /Apps/Media)
+    (Modules + /Apps/Spotube)
     (Modules + /Apps/Spotify)
     (Modules + /Apps/Discord)
+    (Modules + /Apps/OBS)
   ];
 
   hyprland = {
     enable = true;
     monitors = [ "eDP-1, 2880x1800@90,0x0,1.5" ];
     gdkScale = 1.5;
-    cursor.size = 30;
+    cursor.size = 24;
+    exec = [ "waybar" ];
+    idle.enable = true;
+    idle.dimTime = 100;
   };
+
+  waybar.enable = true;
 
   zsh = {
     enable = true;
     host = "laptop";
-    theme = "agnoster";
   };
 
   media.enable = true;
   media.editors = true;
 
+  spotube.enable = true;
   spotify.enable = true;
   discord.enable = true;
+  obs.enable = true;
   
   kitty.enable = true;
-  kitty.opacity = 0.1;
 
   nixvim.enable = true;
 
@@ -49,18 +59,9 @@ in
 
   gaming.enable = true;
   
-  home.file = {
-    # ".screenrc".source = dotfiles/screenrc;
-
-    # # You can also set the file content immediately.
-    # ".gradle/gradle.properties".text = ''
-    #   org.gradle.console=verbose
-    #   org.gradle.daemon.idletimeout=3600000
-    # '';
-  };
-
   home.sessionVariables = {
     EDITOR = "nvim";
+    TERM = "kitty";
   };
 
   nixpkgs.config.allowUnfree = true;
