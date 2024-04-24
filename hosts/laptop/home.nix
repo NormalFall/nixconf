@@ -9,9 +9,9 @@ in
   imports = [
     (Modules + /Themes/Default)
     (Modules + /Dev/NetworkTools)
+    (Modules + /Cad)
     (Modules + /Gaming)
     (Modules + /WindowManager/Hyprland)
-    (Modules + /WindowManager/Waybar)
     (Modules + /Terminal/Nixvim)
     (Modules + /Terminal/Zsh)
     (Modules + /Terminal/Kitty)
@@ -56,6 +56,8 @@ in
     enable = true;
     exclude = [ pkgs.postman ];
   };
+
+  cad.enable = true;
 
   gaming.enable = true;
   

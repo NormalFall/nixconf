@@ -15,6 +15,7 @@ in
 	(Modules + /Greetd)
 	(Bundles + /NiceSettings.nix)
 	(Modules + /MainUser)
+        (Modules + /Privacy)
       ];
   
     # Use systemd for usb boot
@@ -31,6 +32,8 @@ in
     niceSettings.enable = true;
 
     gaming.enable = true;
+
+    privacy.enable = true;
 
     greetd = {
       enable = true;

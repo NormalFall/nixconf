@@ -9,6 +9,7 @@ in
   imports = [
     (Modules + /Themes/Default)
     (Modules + /Dev/NetworkTools)
+    (Modules + /Cad)
     (Modules + /Gaming)
     (Modules + /WindowManager/Hyprland)
     (Modules + /Terminal/Nixvim)

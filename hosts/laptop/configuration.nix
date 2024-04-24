@@ -15,6 +15,7 @@ in
 	(Modules + /Greetd)
 	(Bundles + /NiceSettings.nix)
 	(Modules + /MainUser)
+        (Modules + /Privacy)
         (Modules + /Drivers)
       ];
   
@@ -42,6 +43,8 @@ in
     niceSettings.enable = true;
 
     gaming.enable = true;
+
+    privacy.enable = true;
 
     greetd = {
       enable = true;
