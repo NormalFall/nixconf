@@ -15,7 +15,7 @@
 
     "group/bat": {
         "orientation": "horizontal",
-        "modules": ["battery", "backlight"]
+        "modules": ["power-profiles-daemon", "battery", "backlight"]
     },
 
     "group/net": {
@@ -53,6 +53,18 @@
         "format-icons": ["\uf244", "\uf243", "\uf242", "\uf241", "\uf240"],
     },
 
+    "power-profiles-daemon": {
+      "format": "{icon} ",
+      "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+      "tooltip": true,
+      "format-icons": {
+        "default": "",
+        "performance": "",
+        "balanced": "",
+        "power-saver": ""
+      }
+    },
+
     "backlight": {
         "format": "\udb80\udcdf  {percent}%"
     },
@@ -73,7 +85,7 @@
 
     "network": {
         "format": "",
-        "format-ethernet": "\udb83\udc9d ",
+        "format-ethernet": "\udb80\ude00 ",
         "format-wifi": "{icon} ",
         "format-disconnected": "\udb83\udc9c ",
         "format-icons": ["\udb82\udd2f", "\udb82\udd1f", "\udb82\udd22", "\udb82\udd25", "\udb82\udd28"],
