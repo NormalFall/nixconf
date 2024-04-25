@@ -20,7 +20,7 @@
       ];
     };
 
-    layerrule = [];
+    layerrule = [ "blur,gtk-layer-shell" ];
   };
 
   hyprlock = {
