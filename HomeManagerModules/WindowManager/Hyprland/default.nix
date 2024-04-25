@@ -56,6 +56,11 @@ let
       };
     };
 
+    extraKeybinds = mkOption {
+      default = [];
+      description = "Add additional keybinds for themes";
+    };
+
     wallpaper = mkOption {
       default = null;
       description = "Wallpaper that hyprland uses";
@@ -107,7 +112,7 @@ in
       settings = {
         monitor = cfg.monitors;
 
-        bind = binds.key;
+        bind = binds.key ++ cfg.extraKeybinds;
 	bindm = binds.mouse;
 
         exec-once = cfg.exec;
