@@ -13,8 +13,8 @@ with lib; {
   };
 
   config = {
-    services.tlp.enable = cfg.laptop.enable;
     services.upower.enable = cfg.laptop.enable;
+    services.power-profiles-daemon.enable = cfg.laptop.enable;
 
     environment.systemPackages = (if cfg.logitech.enable then [ pkgs.solaar pkgs.piper ] else []);
   };
