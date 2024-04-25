@@ -11,7 +11,6 @@
       "SUPER,Q,exec,${pkgs.xfce.thunar}/bin/thunar"
       "SUPER,V,togglefloating,"
       "SUPERSHIFT,V,pin,"
-      "SUPER,R,exec, ${pkgs.rofi-wayland}/bin/rofi -show drun"
       "SUPER,P,pseudo,"
       "SUPER,A,exec, ${pkgs.libnotify}/bin/notify-send $(${pkgs.hyprpicker}/bin/hyprpicker)"
       "SUPER,F,fullscreen,0"
