@@ -4,6 +4,11 @@ let
 in
 with lib; {
   options.drivers = {
+    disks.enable = mkOption {
+      default = true;
+      description = "Enables common desktop services for disks";
+    };
+
     logitech.enable = mkEnableOption "Enables drivers for logitechG and logitech mouses";
 
     laptop = {
@@ -13,9 +18,14 @@ with lib; {
   };
 
   config = {
+    services.gvfs.enable = cfg.disks.enable;
+    services.devmon.enable = cfg.disks.enable;
+    services.udisks2.enable = cfg.disks.enable;
+
     services.upower.enable = cfg.laptop.enable;
     services.power-profiles-daemon.enable = cfg.laptop.enable;
 
+    services.ratbagd.enable = cfg.logitech.enable;
     environment.systemPackages = (if cfg.logitech.enable then [ pkgs.solaar pkgs.piper ] else []);
   };
 }

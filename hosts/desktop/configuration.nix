@@ -16,6 +16,7 @@ in
 	(Bundles + /NiceSettings.nix)
 	(Modules + /MainUser)
         (Modules + /Privacy)
+        (Modules + /Drivers)
       ];
   
     # Use systemd for usb boot
@@ -28,6 +29,8 @@ in
       hostName = "snowFlakeThe5th";
       networkmanager.enable = true;
     };
+
+    drivers.logitech.enable = true;
 
     niceSettings.enable = true;
 
