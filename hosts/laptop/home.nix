@@ -1,26 +1,26 @@
 { config, pkgs, userName, ... }:
 let
-  Modules = ../../HomeManagerModules;
+  modules = ../../home-manager-modules;
 in
 {
   home.username = userName;
   home.homeDirectory = "/home/${userName}";
 
   imports = [
-    (Modules + /Themes/Default)
-    (Modules + /Dev/NetworkTools)
-    (Modules + /Cad)
-    (Modules + /Gaming)
-    (Modules + /WindowManager/Hyprland)
-    (Modules + /Terminal/Nixvim)
-    (Modules + /Terminal/Zsh)
-    (Modules + /Terminal/Kitty)
-    (Modules + /School)
-    (Modules + /Apps/Media)
-    (Modules + /Apps/Spotube)
-    (Modules + /Apps/Spotify)
-    (Modules + /Apps/Discord)
-    (Modules + /Apps/OBS)
+    (modules + /themes/default)
+    (modules + /dev/network-tools)
+    (modules + /cad)
+    (modules + /gaming)
+    (modules + /window-manager/hyprland)
+    (modules + /terminal/nixvim)
+    (modules + /terminal/zsh)
+    (modules + /terminal/kitty)
+    (modules + /school)
+    (modules + /apps/media)
+    (modules + /apps/spotube)
+    (modules + /apps/spotify)
+    (modules + /apps/discord)
+    (modules + /apps/obs)
   ];
 
   hyprland = {
