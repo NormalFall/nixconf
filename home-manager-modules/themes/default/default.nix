@@ -4,10 +4,10 @@ let
 in
   {
     imports = [
-      (Modules + /WindowManager/Hyprland)
-      (Modules + /WindowManager/Waybar)
-      (Modules + /Terminal/Kitty)
-      (Modules + /Terminal/Zsh)
+      (Modules + /window-manager/hyprland)
+      (Modules + /window-manager/waybar)
+      (Modules + /terminal/kitty)
+      (Modules + /terminal/zsh)
     ];
 
     config = {

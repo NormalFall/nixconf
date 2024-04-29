@@ -1,22 +1,22 @@
 { config, pkgs, ... }:
 let
   mainUser = "normal";
-  Modules = ../../Modules;
-  Bundles = Modules + "/Bundles";
+  modules = ../../modules;
+  bundles = modules + "/bundles";
 in
   {
     imports =
       [ 
         ./hardware-configuration.nix
-	(Modules + /Pipewire)
-        (Modules + /Gaming)
-        (Bundles + /BasePackages.nix)
-        (Bundles + /Fonts.nix)
-	(Modules + /Greetd)
-	(Bundles + /NiceSettings.nix)
-	(Modules + /MainUser)
-        (Modules + /Privacy)
-        (Modules + /Drivers)
+	(modules + /pipewire)
+        (modules + /gaming)
+        (bundles + /base-packages.nix)
+        (bundles + /fonts.nix)
+	(modules + /greetd)
+	(bundles + /nice-settings.nix)
+	(modules + /main-user)
+        (modules + /privacy)
+        (modules + /drivers)
       ];
   
     # Use systemd for usb boot

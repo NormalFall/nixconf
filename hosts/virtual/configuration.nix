@@ -1,20 +1,19 @@
 { config, pkgs, ... }:
 let
   mainUser = "normal";
-  Modules = ../../Modules;
-  Bundles = Modules + "/Bundles";
+  modules = ../../modules;
+  bundles = modules + "/bundles";
 in
   {
     imports =
       [ 
         ./hardware-configuration.nix
-	(Modules + /Kde)
-	(Modules + /Syncthing)
-        (Bundles + /BasePackages.nix)
-        (Bundles + /Fonts.nix)
-	(Modules + /Greetd)
-	(Bundles + /NiceSettings.nix)
-	(Modules + /MainUser)
+	(modules + /kde)
+        (bundles + /base-packages.nix)
+        (bundles + /fonts.nix)
+	(modules + /greetd)
+	(bundles + /nice-settings.nix)
+	(modules + /main-user)
       ];
   
     boot.loader.grub.enable = true;
