@@ -33,8 +33,6 @@ in
     idle.dimTime = 100;
   };
 
-  waybar.enable = true;
-
   zsh = {
     enable = true;
     host = "laptop";

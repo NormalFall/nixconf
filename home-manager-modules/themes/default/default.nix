@@ -22,6 +22,7 @@ in
         ".config/nwg-drawer/drawer.css".source = ./nwg-drawer.css;
       };
 
+      waybar.enable = true;
       waybar.config = ./Waybar/config.jsonc;
       waybar.style = ./Waybar/style.css;
 

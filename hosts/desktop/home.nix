@@ -29,8 +29,6 @@ in
     cursor.size = 30;
   };
 
-  waybar.enable = true;
-
   zsh = {
     enable = true;
     host = "desktop";
