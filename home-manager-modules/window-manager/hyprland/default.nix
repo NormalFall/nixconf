@@ -108,7 +108,14 @@ in
 
     wayland.windowManager.hyprland = {
       enable = true;
-      systemd.variables = ["--all"];
+      systemd = {
+        variables = ["--all"];
+        extraCommands = [
+          "systemctl --user stop graphical-session.target"
+          "systemctl --user start hyprland-session.target"
+        ];
+      };
+
       settings = {
         monitor = cfg.monitors;
 
