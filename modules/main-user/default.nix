@@ -31,7 +31,7 @@ with lib; {
     users.users.${cfg.userName} = {
       isNormalUser = true;
       initialPassword = "nixos";
-      extraGroups = [ "networkmanager" "wheel" ];
+      extraGroups = [ "networkmanager" "wheel" "libvirtd" "dialout" ];
       shell = pkgs.${cfg.shell};
     };
 
