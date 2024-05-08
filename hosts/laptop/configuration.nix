@@ -11,6 +11,7 @@ in
         (bundles + /base-packages.nix)
         (bundles + /fonts.nix)
 	(bundles + /nice-settings.nix)
+        (modules + /compat-tools)
         (modules + /drivers)
         (modules + /gaming)
 	(modules + /greetd)
