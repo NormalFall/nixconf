@@ -2,7 +2,7 @@
 {
   config = {
     environment.systemPackages = with pkgs; [
-      neofetch
+      fastfetch
       neovim
       tree
       git
