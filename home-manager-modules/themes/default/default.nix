@@ -26,9 +26,8 @@ in
       waybar.config = ./Waybar/config.jsonc;
       waybar.style = ./Waybar/style.css;
 
-      kitty.opacity = 0.35;
-
-      zsh.theme = "agnoster";
+      terminal.kitty.opacity = 0.35;
+      terminal.zsh.theme = "agnoster";
 
       gtk = {
         enable = true;

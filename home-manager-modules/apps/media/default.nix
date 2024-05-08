@@ -1,10 +1,10 @@
 {lib, config, pkgs, ...}:
 let
-  cfg = config.media;
+  cfg = config.apps.media;
 in with lib; {
-  options.media = {
+  options.apps.media = {
     enable = mkEnableOption "Enables media player for popular format";
-    editors = mkEnableOption "Bocko";
+    editors = mkEnableOption "Common editors medias";
     images.enable = mkOption { default = true; };
     images.editor = mkOption { default = true; };
     video.enable = mkOption { default = true; };

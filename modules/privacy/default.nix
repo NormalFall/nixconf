@@ -4,7 +4,7 @@ let
 in
 with lib; {
   options.privacy = {
-    enable = mkEnableOption "Enable Common privacy tools";
+    enable = mkOption { default = true; };
     mullvad = mkOption {
       default = true;
       description = "Enables mullcad common packages";

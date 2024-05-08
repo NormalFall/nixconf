@@ -4,7 +4,7 @@ let
 in
 with lib; {
   options.greetd = {
-    enable = mkEnableOption "Enables greetd";
+    enable = mkOption { default = true; };
 
     greeter = mkOption {
       default = "agreety";

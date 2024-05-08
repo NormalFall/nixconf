@@ -1,9 +1,9 @@
 {lib, config, pkgs, ...}:
 let
-  cfg = config.discord;
+  cfg = config.apps.discord;
 in
 with lib; {
-  options.discord = {
+  options.apps.discord = {
     # Need to add plugin support.
     enable = mkEnableOption "Enables vesktop";
   };

@@ -3,7 +3,7 @@ let
   cfg = config.gaming;
 in
 with lib; {
-  options.gaming.enable = mkEnableOption "Settings for a better gaming experience";
+  options.gaming.enable = mkOption { default = true; };
 
   config = mkIf cfg.enable {
     programs.steam = {

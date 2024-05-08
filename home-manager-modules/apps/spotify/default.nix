@@ -1,9 +1,9 @@
 {lib, config, pkgs, ...}:
 let
-  cfg = config.spotify;
+  cfg = config.apps.spotify;
 in
 with lib; {
-  options.spotify = {
+  options.apps.spotify = {
     enable = mkEnableOption "Enables spotify";
   };
 

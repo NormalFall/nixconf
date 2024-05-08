@@ -30,7 +30,10 @@ let
 in
 with lib; {
   options.gaming = {
-    enable = mkEnableOption "Enable gaming module";
+    enable = mkOption {
+      default = true;
+      description = "Enable gaming module";
+    };
 
     steam.enable = mkOption {
       default = true;

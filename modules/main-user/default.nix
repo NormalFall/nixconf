@@ -5,7 +5,7 @@ let
 in
 with lib; {
   options.mainUser = {
-    enable = mkEnableOption "enable user module";
+    enable = mkOption { default = true; };
 
     homeManager = {
       enable = mkEnableOption "enables home-manager for main user";

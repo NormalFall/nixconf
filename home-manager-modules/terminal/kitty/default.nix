@@ -1,9 +1,9 @@
 {lib, config, pkgs, ...}:
 let
-  cfg = config.kitty;
+  cfg = config.terminal.kitty;
 in
   with lib; {
-    options.kitty = {
+    options.terminal.kitty = {
       enable = mkEnableOption "Enables kitty terminal";
       opacity = mkOption {
         default = 1;
