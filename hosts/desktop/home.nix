@@ -9,6 +9,7 @@ in
   imports = [
     (modules + /themes/default)
     (modules + /cad)
+    (modules + /dev)
     (modules + /gaming)
     (modules + /window-manager/hyprland)
     (modules + /terminal)
