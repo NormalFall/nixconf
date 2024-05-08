@@ -1,6 +1,6 @@
 {lib, config, pkgs, ...}:
 let
-  cfg = config.networkTools;
+  cfg = config.dev.networkTools;
 
   basicPkgs= {
     free = with pkgs; [
@@ -33,7 +33,7 @@ let
 
 in
 with lib; {
-  options.networkTools = {
+  options.dev.networkTools = {
     enable = mkEnableOption "Gives a usefull list of networking tools";
     
     basic = mkOption {
