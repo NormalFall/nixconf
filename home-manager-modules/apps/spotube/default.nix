@@ -1,9 +1,9 @@
 {lib, config, pkgs, ...}:
 let
-  cfg = config.spotube;
+  cfg = config.apps.spotube;
 in
 with lib; {
-  options.spotube = {
+  options.apps.spotube = {
     # need to add config support
     enable = mkEnableOption "Enables spotube";
   };

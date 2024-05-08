@@ -4,9 +4,7 @@ let
   cfg = config.pipewire;
 in
 with lib; {
-  options.pipewire = {
-    enable = mkEnableOption "Enables Pipewire audio backend";
-  };
+  options.pipewire.enable = mkOption { default = true; };
 
   config = mkIf cfg.enable {
     sound.enable = true;

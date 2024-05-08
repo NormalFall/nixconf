@@ -7,16 +7,16 @@ in
   {
     imports =
       [ 
-        ./hardware-configuration.nix
-	(modules + /pipewire)
-        (modules + /gaming)
+       ./hardware-configuration.nix
         (bundles + /base-packages.nix)
         (bundles + /fonts.nix)
-	(modules + /greetd)
 	(bundles + /nice-settings.nix)
-	(modules + /main-user)
-        (modules + /privacy)
         (modules + /drivers)
+        (modules + /gaming)
+	(modules + /greetd)
+	(modules + /main-user)
+	(modules + /pipewire)
+        (modules + /privacy)
       ];
   
     boot.loader = {
@@ -30,8 +30,6 @@ in
       };
     };
 
-    pipewire.enable = true;
-  
     networking = {
       hostName = "NixfoSum";
       networkmanager.enable = true;
@@ -40,22 +38,12 @@ in
     drivers.laptop.enable = true;
     drivers.logitech.enable = true;
 
-    niceSettings.enable = true;
-
-    gaming.enable = true;
-
-    privacy.enable = true;
-
     greetd = {
-      enable = true;
       command = "Hyprland";
       greeter = "tuigreet";
     };
 
-    basePkgs.enable = true;
-
     mainUser = {
-      enable = true;
       homeManager = {
         enable = true;
 	config = ./home.nix;

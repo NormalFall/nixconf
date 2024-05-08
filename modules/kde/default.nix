@@ -1,23 +1,23 @@
 {lib, config, pkgs, ...}:
 let
   cfg = config.kde;
-in
-{
+in with lib; {
   options.kde = {
-    enable = lib.mkEnableOption "Enable KDE";
+    enable = mkOption { default = true; };
 
-    sddm = lib.mkOption {
+    sddm = mkOption {
       default = false;
-      type = lib.types.bool;
+      type = types.bool;
       description = "Enable sddm";
     };
-    kbLayout = lib.mkOption {
+    kbLayout = mkOption {
       default = "us";
+      type = types.str;
       description = ''Set x11 keyboard layout'';
     };
   };
 
-  config = lib.mkIf cfg.enable {
+  config = mkIf cfg.enable {
     services.xserver = {
       displayManager.sddm.enable = cfg.sddm;     
       enable = true;

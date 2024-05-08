@@ -1,9 +1,9 @@
 {lib, config, pkgs, ...}:
 let
-  cfg = config.obs;
+  cfg = config.apps.obs;
 in
 with lib; {
-  options.obs = {
+  options.apps.obs = {
     enable = mkEnableOption "Enables obs";
   };
 

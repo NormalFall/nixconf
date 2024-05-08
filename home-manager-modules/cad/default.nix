@@ -4,7 +4,10 @@ let
 in
 with lib; {
   options.cad = {
-    enable = mkEnableOption "Enables rototyping, CAD tools and 3d printer software";
+    enable = mkOption {
+      default = true;
+      description = "Enables rototyping, CAD tools and 3d printer software";
+    };
     exclude = mkOption {
       default = [];
       description = "Exclude packages from being installed";

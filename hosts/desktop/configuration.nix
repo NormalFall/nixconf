@@ -8,23 +8,21 @@ in
     imports =
       [ 
         ./hardware-configuration.nix
-	(modules + /pipewire)
-        (modules + /gaming)
         (bundles + /base-packages.nix)
         (bundles + /fonts.nix)
-	(modules + /greetd)
 	(bundles + /nice-settings.nix)
-	(modules + /main-user)
-        (modules + /privacy)
         (modules + /drivers)
+        (modules + /gaming)
+	(modules + /greetd)
+	(modules + /main-user)
+	(modules + /pipewire)
+        (modules + /privacy)
       ];
   
     # Use systemd for usb boot
     boot.loader.efi.canTouchEfiVariables = true;
     boot.loader.systemd-boot.enable = true;
     
-    pipewire.enable = true;
-  
     networking = {
       hostName = "snowFlakeThe5th";
       networkmanager.enable = true;
@@ -32,22 +30,12 @@ in
 
     drivers.logitech.enable = true;
 
-    niceSettings.enable = true;
-
-    gaming.enable = true;
-
-    privacy.enable = true;
-
     greetd = {
-      enable = true;
       command = "Hyprland";
       greeter = "tuigreet";
     };
 
-    basePkgs.enable = true;
-
     mainUser = {
-      enable = true;
       homeManager = {
         enable = true;
 	config = ./home.nix;

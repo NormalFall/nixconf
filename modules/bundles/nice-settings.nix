@@ -1,12 +1,6 @@
 {lib, config, pkgs, ...}:
-let
-  cfg = config.niceSettings;
-in
 with lib; {
-  options.niceSettings.enable = 
-    mkEnableOption "Adds a few core settings and nice to have for NixOS";
-
-  config = mkIf cfg.enable {
+  config = {
     nixpkgs.config.allowUnfree = true;
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
     time.timeZone = "America/Toronto";

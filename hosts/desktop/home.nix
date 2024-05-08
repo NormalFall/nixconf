@@ -8,18 +8,11 @@ in
 
   imports = [
     (modules + /themes/default)
-    (modules + /dev/network-tools)
     (modules + /cad)
     (modules + /gaming)
     (modules + /window-manager/hyprland)
-    (modules + /terminal/nixvim)
-    (modules + /terminal/zsh)
-    (modules + /terminal/kitty)
-    (modules + /apps/media)
-    (modules + /apps/spotube)
-    (modules + /apps/spotify)
-    (modules + /apps/discord)
-    (modules + /apps/obs)
+    (modules + /terminal)
+    (modules + /apps)
   ];
 
   hyprland = {
@@ -29,40 +22,9 @@ in
     cursor.size = 30;
   };
 
-  zsh = {
-    enable = true;
-    host = "desktop";
-  };
+  terminal.zsh.host = "desktop";
 
-  kitty.enable = true;
-
-  media.enable = true;
-  media.editors = true;
-
-  spotube.enable = true;
-  spotify.enable = true;
-  discord.enable = true;
-  obs.enable = true;
-
-
-  nixvim.enable = true;
-
-  networkTools = {
-    enable = true;
-    exclude = [ pkgs.postman ];
-  };
-
-  gaming.enable = true;
-  
-  home.file = {
-    # ".screenrc".source = dotfiles/screenrc;
-
-    # # You can also set the file content immediately.
-    # ".gradle/gradle.properties".text = ''
-    #   org.gradle.console=verbose
-    #   org.gradle.daemon.idletimeout=3600000
-    # '';
-  };
+  apps.media.editors = true;
 
   home.sessionVariables = {
     EDITOR = "nvim";
