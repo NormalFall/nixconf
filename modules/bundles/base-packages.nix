@@ -10,6 +10,7 @@
       firefox
       btop
       killall
+      nh
     ];
   };
 }
