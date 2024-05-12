@@ -84,7 +84,6 @@ in
   imports = [ 
     inputs.hyprland.homeManagerModules.default
     inputs.hyprpaper.homeManagerModules.default
-    inputs.hypridle.homeManagerModules.default
     inputs.hyprlock.homeManagerModules.default
   ];
 
@@ -157,35 +156,37 @@ in
 
     services.hypridle = {
       enable = cfg.idle.enable;
-      listeners = [
-        (if cfg.idle.dimTime != null 
-        then {
-          timeout = cfg.idle.dimTime;
-          onTimeout = "${pkgs.brightnessctl}/bin/brightnessctl s 5% -s & ${pkgs.brightnessctl}/bin/brightnessctl -d *::kbd_backlight s 0 -s";
-          onResume = "${pkgs.brightnessctl}/bin/brightnessctl -r & ${pkgs.brightnessctl}/bin/brightnessctl -d *::kbd_backlight -r";
-        }
-        else {})
+      settings = {
+        listeners = [
+          (if cfg.idle.dimTime != null 
+          then {
+            timeout = cfg.idle.dimTime;
+            onTimeout = "${pkgs.brightnessctl}/bin/brightnessctl s 5% -s & ${pkgs.brightnessctl}/bin/brightnessctl -d *::kbd_backlight s 0 -s";
+            onResume = "${pkgs.brightnessctl}/bin/brightnessctl -r & ${pkgs.brightnessctl}/bin/brightnessctl -d *::kbd_backlight -r";
+          }
+          else {})
 
-        (if cfg.idle.lockTime != null 
-        then {
-          timeout = cfg.idle.sleepTime;
-          onTimeout = "loginctl lock-session";
-        }
-        else {})
+          (if cfg.idle.lockTime != null 
+          then {
+            timeout = cfg.idle.sleepTime;
+            onTimeout = "loginctl lock-session";
+          }
+          else {})
 
-        (if cfg.idle.sleepTime != null 
-        then {
-          timeout = cfg.idle.sleepTime;
-          onTimeout = "systemctl suspend";
-        }
-        else {})
-      ];
+          (if cfg.idle.sleepTime != null 
+          then {
+            timeout = cfg.idle.sleepTime;
+            onTimeout = "systemctl suspend";
+          }
+          else {})
+        ];
 
-      
-      lockCmd = "pidof hyprlock || hyprlock";
-      beforeSleepCmd = if cfg.idle.lockBeforeSleep
-        then "loginctl lock-session"
-        else "";
+        
+        lockCmd = "pidof hyprlock || hyprlock";
+        beforeSleepCmd = if cfg.idle.lockBeforeSleep
+          then "loginctl lock-session"
+          else "";
+        };
     };
 
     programs.hyprlock = theme.hyprlock // {enable = true;};
