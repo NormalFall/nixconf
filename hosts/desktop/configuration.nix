@@ -18,6 +18,7 @@ in
 	(modules + /main-user)
 	(modules + /pipewire)
         (modules + /privacy)
+        (modules + /vms)
       ];
   
     # Use systemd for usb boot
