@@ -6,7 +6,6 @@ let
 
   imports = [
     ./discord
-    ./media
     ./obs
     ./spotify
     ./spotube
@@ -14,7 +13,6 @@ let
 
   config.apps = mkIf cfg.enableAll {
     discord.enable = mkDefault true;
-    media.enable = mkDefault true;
     obs.enable = mkDefault true;
     spotify.enable = mkDefault true;
     spotube.enable = mkDefault true;
