@@ -18,6 +18,7 @@ in
 	(modules + /main-user)
 	(modules + /pipewire)
         (modules + /privacy)
+        (modules + /vms)
       ];
   
     boot.loader = {
