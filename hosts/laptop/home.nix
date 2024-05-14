@@ -17,6 +17,7 @@ in
   ];
 
   hyprland = {
+    enable = true;
     monitors = [ "eDP-1, 2880x1800@90,0x0,1.5" ];
     gdkScale = 1.5;
     cursor.size = 24;
@@ -27,8 +28,7 @@ in
 
   terminal.zsh.host = "laptop";
 
-  media.enable = true;
-  media.editors = true;
+  apps.media.editors = true;
   
   home.sessionVariables = {
     EDITOR = "nvim";
