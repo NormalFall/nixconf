@@ -35,8 +35,8 @@
       "SUPER,down,movefocus,d"
       
       #Move workspace to other monitor
-      "SUPER,Z,movecurrentworkspacetomonitor,l"
-      "SUPER,X,movecurrentworkspacetomonitor,r"
+      "SUPER,Z,movecurrentworkspacetomonitor,+1"
+      "SUPER,X,movecurrentworkspacetomonitor,-1"
       
       #Workspaces
       "SUPER,1,workspace,1"
