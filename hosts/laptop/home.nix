@@ -10,6 +10,7 @@ in
     (modules + /themes/default)
     (modules + /cad)
     (modules + /dev)
+    (modules + /files)
     (modules + /gaming)
     (modules + /window-manager/hyprland)
     (modules + /terminal)
@@ -28,12 +29,14 @@ in
 
   terminal.zsh.host = "laptop";
 
-  apps.media.editors = true;
+  files.media.editors = true;
   
   home.sessionVariables = {
     EDITOR = "nvim";
     TERM = "kitty";
   };
+
+  xdg.mimeApps.enable = true;
 
   nixpkgs.config.allowUnfree = true;
   home.stateVersion = "23.11"; # Please read the comment before changing.
