@@ -8,7 +8,7 @@
       "SUPER,T,exec,${pkgs.kitty}/bin/kitty"
       "SUPER,C,killactive,"
       "SUPERSHIFT,M,exit,"
-      "SUPER,Q,exec,${pkgs.xfce.thunar}/bin/thunar"
+      "SUPER,Q,exec,xdg-open ~"
       "SUPER,V,togglefloating,"
       "SUPERSHIFT,V,pin,"
       "SUPER,P,pseudo,"
