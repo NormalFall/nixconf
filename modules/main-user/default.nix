@@ -36,6 +36,7 @@ with lib; {
     };
 
     home-manager = mkIf cfg.homeManager.enable {
+      backupFileExtension = ".backup";
       extraSpecialArgs = {
         inherit (cfg) userName;
         inherit inputs;
