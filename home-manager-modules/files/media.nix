@@ -20,7 +20,6 @@ in with lib; {
     ++ (if cfg.audio.enable then [ pkgs.rhythmbox ] ++ (if (cfg.audio.editor && cfg.editors) then [ pkgs.audacity ] else []) else []);
 
     xdg.mimeApps.defaultApplications = {
-      "image/*" = mkIf cfg.images.enable "org.gnome.gThumb.desktop";
       "image/jpeg" = mkIf cfg.images.enable "org.gnome.gThumb.desktop";
       "image/png" = mkIf cfg.images.enable "org.gnome.gThumb.desktop";
       "image/gif" = mkIf cfg.images.enable "org.gnome.gThumb.desktop";
