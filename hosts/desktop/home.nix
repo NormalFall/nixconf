@@ -10,6 +10,7 @@ in
     (modules + /themes/default)
     (modules + /cad)
     (modules + /dev)
+    (modules + /files)
     (modules + /gaming)
     (modules + /window-manager/hyprland)
     (modules + /terminal)
@@ -25,7 +26,7 @@ in
 
   terminal.zsh.host = "desktop";
 
-  apps.media.editors = true;
+  files.media.editors = true;
 
   home.sessionVariables = {
     EDITOR = "nvim";
