@@ -13,6 +13,7 @@ in
 	(bundles + /nice-settings.nix)
         (modules + /compat-tools)
         (modules + /drivers)
+        (modules + /embeded-dev)
         (modules + /gaming)
 	(modules + /greetd)
 	(modules + /main-user)
