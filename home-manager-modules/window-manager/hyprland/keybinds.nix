@@ -15,8 +15,8 @@
       "SUPER,A,exec, ${pkgs.libnotify}/bin/notify-send $(${pkgs.hyprpicker}/bin/hyprpicker)"
       "SUPER,F,fullscreen,0"
       "SUPERSHIFT,F,fullscreen,1"
-      "SUPER,S,exec,${pkgs.grimblast}/bin/grimblast copy screen"
-      "SUPERSHIFT,S,exec,${pkgs.grimblast}/bin/grimblast copy area"
+      "SUPER,S,exec,GRIMBLAST_EDITOR=\"${pkgs.swappy}/bin/swappy -f\" ${pkgs.grimblast}/bin/grimblast edit screen"
+      "SUPERT,S,exec,GRIMBLAST_EDITOR=\"${pkgs.swappy}/bin/swappy -f\" ${pkgs.grimblast}/bin/grimblast edit area"
       
       #Audio
       ",XF86AudioLowerVolume,exec,${pkgs.pamixer}/bin/pamixer -d 5"
