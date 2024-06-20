@@ -23,7 +23,7 @@
     layerrule = [ "blur,gtk-layer-shell" ];
   };
 
-  hyprlock = {
+  hyprlock.settings = {
     general = {
       no_fade_in = false;
       grace = 0;

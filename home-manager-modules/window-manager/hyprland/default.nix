@@ -81,11 +81,7 @@ in
     
   inherit options;
 
-  imports = [ 
-    inputs.hyprland.homeManagerModules.default
-    inputs.hyprpaper.homeManagerModules.default
-    inputs.hyprlock.homeManagerModules.default
-  ];
+  imports = [ inputs.hyprland.homeManagerModules.default ];
 
   config = mkIf cfg.enable {
     home.packages = [ pkgs.xdg-utils ];
@@ -145,13 +141,15 @@ in
     services.hyprpaper = if cfg.wallpaper != null then {
       enable = true;
 
-      wallpapers = [
-        ",${cfg.wallpaper}"
-      ];
+      settings = {
+        wallpaper = [
+          ",${cfg.wallpaper}"
+        ];
 
-      preloads = [
-        "${cfg.wallpaper}"
-      ];
+        preload = [
+          "${cfg.wallpaper}"
+        ];
+      };
     } else {};
 
     services.hypridle = {
