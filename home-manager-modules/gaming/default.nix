@@ -78,7 +78,7 @@ in with lib; {
 
   config = mkIf cfg.enable {
     home.packages = 
-      (if cfg.osu then [ inputs.nix-gaming.packages.${pkgs.system}.osu-lazer-bin ] else [])
+      (if cfg.osu then [ pkgs.osu-lazer-bin ] else [])
       ++ (if cfg.minecraft then [ pkgs.prismlauncher ] else [])
       ++ (if cfg.lutris then [ pkgs.lutris ] else [])
       ++ (if cfg.steamExtra then steamExtraPkgs else [])
