@@ -27,7 +27,7 @@ in
     boot.loader.systemd-boot.enable = true;
     
     networking = {
-      hostName = "snowFlakeThe5th";
+      hostName = "snowFlakeThe6th";
       networkmanager.enable = true;
     };
 
