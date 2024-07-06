@@ -25,7 +25,6 @@ let
 
     # Quality of life
     esbenp.prettier-vscode
-    vscodevim.vim
   ];
 in with lib;
 {
