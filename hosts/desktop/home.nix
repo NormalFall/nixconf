@@ -1,4 +1,4 @@
-{ config, pkgs, userName, ... }:
+{ config, pkgs, userName, inputs, ... }:
 let
   modules = ../../home-manager-modules;
 in
@@ -15,7 +15,13 @@ in
     (modules + /window-manager/hyprland)
     (modules + /terminal)
     (modules + /apps)
+    inputs.ssbm-nix.homeManagerModule
   ];
+
+  ssbm.slippi-launcher = {
+    enable = true;
+    isoPath = "/mnt/nvme/ROMs/GC/ANIMELEE.iso";
+  };
 
   hyprland = {
     enable = true;
