@@ -6,7 +6,7 @@ in with lib; {
     mkEnableOption "Enable nautilus as default filemanager";
   
   config = mkIf cfg.enable {
-    home.packages = [ pkgs.gnome.nautilus ];
+    home.packages = [ pkgs.nautilus ];
 
     xdg.mimeApps.defaultApplications."inode/directory" = "org.gnome.Nautilus.desktop";
   };
