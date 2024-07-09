@@ -39,6 +39,7 @@
   # networking.interfaces.wlp4s0.useDHCP = lib.mkDefault true;
 
   hardware.graphics.enable = true;
+  hardware.graphics.enable32Bit = true;
 
   hardware.bluetooth = {
     enable = true;
