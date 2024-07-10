@@ -600,11 +600,11 @@
         "slippi-desktop": "slippi-desktop"
       },
       "locked": {
-        "lastModified": 1718952202,
-        "narHash": "sha256-ZzVEq0hlmbTNfzpVIZVrGDM+A4Zat3HjuvTJ4Z2eg6Y=",
+        "lastModified": 1720572114,
+        "narHash": "sha256-FdJyi+cIMMB4HLBjJjLVjAXUPfN0B3/VaqTx+yGl7U8=",
         "owner": "NormalFall",
         "repo": "ssbm-nix",
-        "rev": "9e418e226f8a00e4fde6267aee017420a64ef5f8",
+        "rev": "5cb1c02febfc1eec3854c94f03af15a8ea65ddc5",
         "type": "github"
       },
       "original": {
