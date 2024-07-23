@@ -25,7 +25,7 @@ in
 
   hyprland = {
     enable = true;
-    monitors = [ "DP-1, 3440x1440@144,0x0,1" ];
+    monitors = [ "DP-1, 3440x1440@120,0x0,1" ];
     exec = [ "waybar" ];
     cursor.size = 30;
   };
