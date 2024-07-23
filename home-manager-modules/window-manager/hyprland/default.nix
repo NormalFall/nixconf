@@ -1,4 +1,4 @@
-{lib, config, pkgs, inputs, ...}:
+{lib, config, pkgs, ...}:
 let
   cfg = config.hyprland;
 
@@ -80,8 +80,6 @@ in
   with lib; {
     
   inherit options;
-
-  imports = [ inputs.hyprland.homeManagerModules.default ];
 
   config = mkIf cfg.enable {
     home.packages = [ pkgs.xdg-utils ];
