@@ -33,6 +33,11 @@ let
       description = "Basicly exec-once";
     };
 
+    polkit = mkOption {
+      default = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+      description = "Path of polkit agent";
+    };
+
     touchScreen = mkEnableOption "Enables or disables touchscreens";
 
     idle = {
@@ -115,7 +120,7 @@ in
         bind = binds.key ++ cfg.extraKeybinds;
 	bindm = binds.mouse;
 
-        exec-once = cfg.exec;
+        exec-once = cfg.exec ++ [ cfg.polkit ];
 
         input.touchdevice.enabled = cfg.touchScreen;
         
