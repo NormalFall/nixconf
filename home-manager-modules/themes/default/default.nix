@@ -26,6 +26,9 @@ in
       waybar.config = ./Waybar/config.jsonc;
       waybar.style = ./Waybar/style.css;
 
+      services.dunst.enable = true;
+      services.dunst.settings = import ./dunst.nix;
+
       terminal.kitty.opacity = 0.35;
       terminal.zsh.theme = "agnoster";
 
