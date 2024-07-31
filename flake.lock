@@ -407,11 +407,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1721872232,
-        "narHash": "sha256-CF+HJK+fSSWGYpwGIxB1Lpj3eZiJhcJ+qI8qcuGa0Sw=",
+        "lastModified": 1722440762,
+        "narHash": "sha256-bw7gnsQ1hRPMHbv2eA+iUv1eAMteKs4WzVX8ble4pZw=",
         "owner": "NormalFall",
         "repo": "ssbm-nix",
-        "rev": "dfc88d665ac30ce614cb2bee83630a23fa1e05b6",
+        "rev": "cdd523a50cfbd8a3623626b31dd042a1720e14fa",
         "type": "github"
       },
       "original": {
