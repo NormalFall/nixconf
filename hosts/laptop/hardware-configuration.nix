@@ -34,7 +34,7 @@
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlp1s0.useDHCP = lib.mkDefault true;
 
-  hardware.opengl.enable = true;
+  hardware.graphics.enable = true;
   hardware.graphics.enable32Bit = true;
 
   hardware.bluetooth = {
