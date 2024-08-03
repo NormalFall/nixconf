@@ -68,6 +68,8 @@ with lib; {
         cmp-path.enable = true;
         luasnip.enable = true;
 
+        presence-nvim.enable = true;
+
         cmp = {
           enable = true;
 
