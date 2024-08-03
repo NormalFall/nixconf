@@ -1,4 +1,4 @@
-{ config, pkgs, userName, inputs, ... }:
+{ config, pkgs, userName, ... }:
 let
   modules = ../../home-manager-modules;
 in
@@ -15,14 +15,8 @@ in
     (modules + /window-manager/hyprland)
     (modules + /terminal)
     (modules + /apps)
-    inputs.ssbm-nix.homeManagerModule
   ];
   
-  ssbm.slippi-launcher = {
-    enable = true;
-    isoPath = ".roms/GC/Super Smash Bros. Melee (USA) (En,Ja) (v1.02).iso";
-  };
-
   hyprland = {
     enable = true;
     monitors = [ "eDP-1, 2880x1800@90,0x0,1.5" ];
