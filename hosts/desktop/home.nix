@@ -1,4 +1,4 @@
-{ config, pkgs, userName, inputs, ... }:
+{ config, pkgs, userName, ... }:
 let
   modules = ../../home-manager-modules;
 in
@@ -15,13 +15,7 @@ in
     (modules + /window-manager/hyprland)
     (modules + /terminal)
     (modules + /apps)
-    inputs.ssbm-nix.homeManagerModule
   ];
-
-  ssbm.slippi-launcher = {
-    enable = true;
-    isoPath = "/mnt/nvme/ROMs/GC/ANIMELEE.iso";
-  };
 
   hyprland = {
     enable = true;
@@ -33,6 +27,8 @@ in
   terminal.zsh.host = "desktop";
 
   files.media.editors = true;
+
+  gaming.extras.slippi.isoPath = "/mnt/nvme/ROMs/GC/ANIMELEE.iso";
 
   home.sessionVariables = {
     EDITOR = "nvim";
