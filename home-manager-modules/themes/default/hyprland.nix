@@ -30,9 +30,9 @@
       disable_loading_bar = true;
     };
 
-    input-fields = [
+    input-field = [
       {
-        size = { width = 250; height = 60; };
+        size = "250, 60";
         outline_thickness = 2;
         dots_size = 0.2;
         dots_spacing = 0.2;
@@ -43,18 +43,18 @@
         fade_on_empty = false;
         placeholder_text = ''<i><span foreground="##cdd6f4">Input Password...</span></i>'';
         hide_input = false;
-        position = { x = 0; y = -120; };
+        position = "0, -120";
         halign = "center";
         valign = "center";
       }
     ];
 
-    labels = [
+    label = [
       {
         text = ''cmd[update:1000] echo "$(date +"%-I:%M%p")"'';
         font_size = 120;
         font_family = "JetBrains Mono Nerd Font Mono ExtraBold";
-        position = { x = 0; y = -300; };
+        position = "0, -300";
         halign = "center";
         valign = "top";
       }
@@ -62,13 +62,13 @@
         text = "Hi there, $USER";
         font_size = 25;
         font_family = "JetBrains Mono Nerd Font Mono";
-        position = { x = 0; y = -40; };
+        position = "0, -40";
         halign = "center";
         valign = "center";
       }
     ];
 
-    backgrounds = [
+    background = [
       {
         path = "screenshot";
         blur_passes = 1;
