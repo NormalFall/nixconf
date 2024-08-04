@@ -158,35 +158,36 @@ in
     services.hypridle = {
       enable = cfg.idle.enable;
       settings = {
-        listeners = [
+        listener = [
           (if cfg.idle.dimTime != null 
           then {
             timeout = cfg.idle.dimTime;
-            onTimeout = "${pkgs.brightnessctl}/bin/brightnessctl s 5% -s & ${pkgs.brightnessctl}/bin/brightnessctl -d *::kbd_backlight s 0 -s";
-            onResume = "${pkgs.brightnessctl}/bin/brightnessctl -r & ${pkgs.brightnessctl}/bin/brightnessctl -d *::kbd_backlight -r";
+            on-timeout = "${pkgs.brightnessctl}/bin/brightnessctl s 5% -s & ${pkgs.brightnessctl}/bin/brightnessctl -d *::kbd_backlight s 0 -s";
+            on-resume = "${pkgs.brightnessctl}/bin/brightnessctl -r & ${pkgs.brightnessctl}/bin/brightnessctl -d *::kbd_backlight -r";
           }
           else {})
 
           (if cfg.idle.lockTime != null 
           then {
             timeout = cfg.idle.sleepTime;
-            onTimeout = "loginctl lock-session";
+            on-timeout = "loginctl lock-session";
           }
           else {})
 
           (if cfg.idle.sleepTime != null 
           then {
             timeout = cfg.idle.sleepTime;
-            onTimeout = "systemctl suspend";
+            on-timeout = "systemctl suspend";
           }
           else {})
         ];
 
-        
-        lockCmd = "pidof hyprlock || hyprlock";
-        beforeSleepCmd = if cfg.idle.lockBeforeSleep
-          then "loginctl lock-session"
-          else "";
+        general = {
+          lock_cmd = "${pkgs.hyprlock}/bin/hyprlock";
+          before_sleep_cmd = if cfg.idle.lockBeforeSleep
+            then "loginctl lock-session"
+            else "";
+          };
         };
     };
 
