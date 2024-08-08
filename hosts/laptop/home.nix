@@ -18,11 +18,8 @@ in
   ];
   
   hyprland = {
-    enable = true;
-    monitors = [ "eDP-1, 2880x1800@90,0x0,1.5" ];
-    gdkScale = 1.5;
-    cursor.size = 24;
-    exec = [ "waybar" ];
+    wm.monitors = [ "eDP-1, 2880x1800@90,0x0,1.5" ];
+    wm.gdkScale = 1.5;
     idle.enable = true;
     idle.dimTime = 100;
   };
