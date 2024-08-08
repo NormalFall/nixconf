@@ -19,8 +19,8 @@ in
 
   hyprland = {
     enable = true;
-    monitors = [ "DP-1, 3440x1440@120,0x0,1" ];
-    cursor.size = 30;
+    wm.monitors = [ "DP-1, 3440x1440@120,0x0,1" ];
+    wm.cursor.size = 30;
   };
 
   terminal.zsh.host = "desktop";
