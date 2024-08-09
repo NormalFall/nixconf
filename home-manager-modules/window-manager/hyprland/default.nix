@@ -5,7 +5,7 @@ in with lib; {
   options.hyprland.enable = mkEnableOption "Enables Hyprland's ecosystem" // {default = true;};
 
   imports = [
-    ./hyprland.nix
+    ./hyprland
     ./hypridle.nix
     ./hyprlock.nix
   ];

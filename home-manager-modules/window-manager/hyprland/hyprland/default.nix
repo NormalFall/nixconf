@@ -55,6 +55,10 @@ in with lib; {
     };
   };
 
+  imports = [
+    ./hyprexpo.nix
+  ];
+
   config = mkIf cfg.enable {
     home.packages = [ pkgs.xdg-utils ];
     xdg.portal= {
