@@ -47,7 +47,6 @@
       "SUPER,7,workspace,7"
       "SUPER,8,workspace,8"
       "SUPER,9,workspace,9"
-      "SUPER,0,workspace,10"
       
       #Move window to
       "ALT,1,movetoworkspace,1"
@@ -59,7 +58,6 @@
       "ALT,7,movetoworkspace,7"
       "ALT,8,movetoworkspace,8"
       "ALT,9,movetoworkspace,9"
-      "ALT,0,movetoworkspace,10"
       
       #Mouse window manipulation
       "SUPERSHIFT,up, resizeactive,0 60"
