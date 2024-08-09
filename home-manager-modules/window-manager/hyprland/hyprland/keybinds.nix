@@ -1,10 +1,7 @@
-{pkgs, ...}: {
-    mouse = [
-      "SUPER, mouse:272, movewindow"
-      "SUPER, mouse:273, resizewindow"
-    ];
-
-    key = [
+{pkgs, ...}:
+{
+  wayland.windowManager.hyprland.settings = {
+    bind = [
       "SUPER,T,exec,${pkgs.kitty}/bin/kitty"
       "SUPER,C,killactive,"
       "SUPERSHIFT,M,exit,"
@@ -19,7 +16,7 @@
       #ScreenShots
       "ALT,S,exec,GRIMBLAST_EDITOR=\"${pkgs.swappy}/bin/swappy -f\" ${pkgs.grimblast}/bin/grimblast edit screen"
       "ALTSHIFT,S,exec,GRIMBLAST_EDITOR=\"${pkgs.swappy}/bin/swappy -f\" ${pkgs.grimblast}/bin/grimblast edit area"
-      
+       
       #Audio
       ",XF86AudioLowerVolume,exec,${pkgs.pamixer}/bin/pamixer -d 5"
       ",XF86AudioRaiseVolume,exec, ${pkgs.pamixer}/bin/pamixer -i 5"
@@ -29,7 +26,7 @@
       #Brightness
       ",XF86MonBrightnessDown,exec,${pkgs.brightnessctl}/bin/brightnessctl s 10%-"
       ",XF86MonBrightnessUp,exec,${pkgs.brightnessctl}/bin/brightnessctl s +10%"
-      
+        
       #Aim Focus
       "SUPER,left,movefocus,l"
       "SUPER,right,movefocus,r"
@@ -64,10 +61,16 @@
       "ALT,9,movetoworkspace,9"
       "ALT,0,movetoworkspace,10"
       
-      #Mouse winodw manipulation
+      #Mouse window manipulation
       "SUPERSHIFT,up, resizeactive,0 60"
       "SUPERSHIFT,down, resizeactive,0 -60"
       "SUPERSHIFT,left, resizeactive,-60 0"
       "SUPERSHIFT,right, resizeactive,60 0"
-   ];
-   }
+    ];
+
+    bindm = [
+      "SUPER, mouse:272, movewindow"
+      "SUPER, mouse:273, resizewindow"
+    ];
+  };
+}
