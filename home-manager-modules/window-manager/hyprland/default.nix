@@ -5,9 +5,9 @@ in with lib; {
   options.hyprland.enable = mkEnableOption "Enables Hyprland's ecosystem" // {default = true;};
 
   imports = [
-    ./hyprland
-    ./hypridle.nix
-    ./hyprlock.nix
+    ./wm
+    ./idle.nix
+    ./lock.nix
   ];
 
   config = mkIf cfg.enable {
