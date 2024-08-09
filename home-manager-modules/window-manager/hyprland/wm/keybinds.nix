@@ -2,16 +2,19 @@
 {
   wayland.windowManager.hyprland.settings = {
     bind = [
+      #Apps
       "SUPER,T,exec,${pkgs.kitty}/bin/kitty"
+      "SUPER,Q,exec,xdg-open ~"
+      "SUPER,A,exec, ${pkgs.libnotify}/bin/notify-send $(${pkgs.hyprpicker}/bin/hyprpicker)"
+      "SUPER,F,fullscreen,0"
+
+      #Windows
+      "SUPERSHIFT,F,fullscreen,1"
       "SUPER,C,killactive,"
       "SUPERSHIFT,M,exit,"
-      "SUPER,Q,exec,xdg-open ~"
       "SUPER,V,togglefloating,"
       "SUPERSHIFT,V,pin,"
       "SUPER,P,pseudo,"
-      "SUPER,A,exec, ${pkgs.libnotify}/bin/notify-send $(${pkgs.hyprpicker}/bin/hyprpicker)"
-      "SUPER,F,fullscreen,0"
-      "SUPERSHIFT,F,fullscreen,1"
 
       #ScreenShots
       "ALT,S,exec,GRIMBLAST_EDITOR=\"${pkgs.swappy}/bin/swappy -f\" ${pkgs.grimblast}/bin/grimblast edit screen"
