@@ -8,6 +8,9 @@
       "SUPER,A,exec, ${pkgs.libnotify}/bin/notify-send $(${pkgs.hyprpicker}/bin/hyprpicker)"
       "SUPER,F,fullscreen,0"
 
+      #Lock
+      "SUPER,L,exec,loginctl lock-session"     
+
       #Windows
       "SUPERSHIFT,F,fullscreen,1"
       "SUPER,C,killactive,"
