@@ -5,6 +5,7 @@
       fastfetch
       neovim
       tree
+      fd
       git
       gdu
       firefox
