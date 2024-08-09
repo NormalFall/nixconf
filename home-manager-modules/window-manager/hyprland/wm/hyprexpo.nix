@@ -11,7 +11,7 @@ in with lib; {
         bind = ["SUPER, W, hyprexpo:expo, toggle"];
         plugin.hyprexpo = {
           columns = 3;
-          workspace_method = "center current";
+          workspace_method = "first 1";
         };
       };
     };
