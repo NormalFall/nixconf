@@ -9,7 +9,7 @@ in with lib; {
       plugins = [pkgs.hyprlandPlugins.hyprexpo];
       settings = {
         bind = ["SUPER, W, hyprexpo:expo, toggle"];
-        plugin = {
+        plugin.hyprexpo = {
           columns = 3;
           workspace_method = "center current";
         };
