@@ -1,7 +1,7 @@
 {lib, ...}:
 {
   imports = [
-    ../../../window-manager/hyprland/hyprland.nix
+    ../../../window-manager/hyprland/hyprland
     ../../../window-manager/hyprland/hyprlock.nix
   ];
   
