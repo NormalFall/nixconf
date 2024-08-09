@@ -1,9 +1,6 @@
 {lib, config, pkgs, ...}:
 let
   cfg = config.hyprland.wm;
-
-  binds = (import ./keybinds.nix) pkgs;
-
 in with lib; {
     
   options.hyprland.wm = with lib; {
@@ -56,6 +53,7 @@ in with lib; {
   };
 
   imports = [
+    ./keybinds.nix
     ./hyprexpo.nix
   ];
 
@@ -90,8 +88,7 @@ in with lib; {
       settings = {
         monitor = cfg.monitors;
 
-        bind = binds.key ++ cfg.extraKeybinds;
-	bindm = binds.mouse;
+        bind = cfg.extraKeybinds;
 
         exec-once = cfg.exec ++ [ cfg.polkit ];
 
