@@ -1,8 +1,8 @@
 {lib, ...}:
 {
   imports = [
-    ../../../window-manager/hyprland/hyprland
-    ../../../window-manager/hyprland/hyprlock.nix
+    ../../../window-manager/hyprland/wm
+    ../../../window-manager/hyprland/lock.nix
   ];
   
   config = {
