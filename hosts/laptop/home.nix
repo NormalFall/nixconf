@@ -28,11 +28,6 @@ in
 
   files.media.editors = true;
   
-  home.sessionVariables = {
-    EDITOR = "nvim";
-    TERM = "kitty";
-  };
-
   xdg.mimeApps.enable = true;
 
   nixpkgs.config.allowUnfree = true;
