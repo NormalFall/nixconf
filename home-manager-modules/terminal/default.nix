@@ -7,11 +7,13 @@ in with lib; {
     ./kitty
     ./nixvim
     ./zsh
+    ./nh
   ];
 
   config.terminal = mkIf cfg.enableAll {
     kitty.enable = mkDefault true;
     nixvim.enable = mkDefault true;
     zsh.enable = mkDefault true;
+    nh.enable = mkDefault true;
   };
 }
