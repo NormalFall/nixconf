@@ -23,9 +23,10 @@ with lib; {
       enableCompletion = true;
 
       shellAliases = {
-        test = "sudo nixos-rebuild test --flake /etc/nixos#${cfg.host}";
-        update = "sudo nixos-rebuild switch --flake /etc/nixos#${cfg.host}";
-        edit = "sudo -E -s nvim /etc/nixos/";
+        test = "nh os test -H ${cfg.host}";
+        update = "nh os switch -H ${cfg.host}";
+        upgrade = "update --update";
+        edit = "nvim $FLAKE";
       };
 
       oh-my-zsh = {
