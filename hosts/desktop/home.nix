@@ -29,10 +29,6 @@ in
 
   gaming.extras.slippi.isoPath = "/mnt/nvme/ROMs/GC/ANIMELEE.iso";
 
-  home.sessionVariables = {
-    EDITOR = "nvim";
-  };
-
   xdg.mimeApps.enable = true;
 
   nixpkgs.config.allowUnfree = true;
