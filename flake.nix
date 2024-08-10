@@ -41,14 +41,6 @@
     
       nixosConfigurations = {
 
-        virtual = nixpkgs.lib.nixosSystem {
-          specialArgs = {inherit inputs;};
-          modules = [ 
-            ./hosts/virtual/configuration.nix
-            inputs.home-manager.nixosModules.default
-          ];
-        };
-
         laptop = nixpkgs.lib.nixosSystem {
           specialArgs = {inherit inputs;};
           modules = [
