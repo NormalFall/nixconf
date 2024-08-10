@@ -16,7 +16,7 @@ in with lib; {
   config = mkIf cfg.enable {
     home.packages =
        (if cfg.images.enable then [ pkgs.gthumb ] ++ (if (cfg.images.editor && cfg.editors) then [ pkgs.gimp ] else []) else [])
-    ++ (if cfg.video.enable then [ pkgs.mpv ] ++ (if (cfg.video.editor && cfg.editors) then [ pkgs.kdenlive ] else []) else [])
+    ++ (if cfg.video.enable then [ pkgs.mpv ] ++ (if (cfg.video.editor && cfg.editors) then [ pkgs.kdenlive pkgs.ffmpeg ] else []) else [])
     ++ (if cfg.audio.enable then [ pkgs.rhythmbox ] ++ (if (cfg.audio.editor && cfg.editors) then [ pkgs.audacity ] else []) else []);
 
     xdg.mimeApps.defaultApplications = {
