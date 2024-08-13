@@ -1,10 +1,9 @@
-{lib, ...}:
-{
+{ lib, ... }: {
   imports = [
     ../../../window-manager/hyprland/wm
     ../../../window-manager/hyprland/lock.nix
   ];
-  
+
   config = {
     hyprland.wm = {
       wallpaper = lib.mkDefault ../nixos.png;

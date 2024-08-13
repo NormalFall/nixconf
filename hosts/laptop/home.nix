@@ -1,8 +1,6 @@
 { config, pkgs, userName, ... }:
-let
-  modules = ../../home-manager-modules;
-in
-{
+let modules = ../../home-manager-modules;
+in {
   home.username = userName;
   home.homeDirectory = "/home/${userName}";
 
@@ -17,7 +15,7 @@ in
     (modules + /apps)
     (modules + /utilities)
   ];
-  
+
   hyprland = {
     wm.monitors = [ "eDP-1, 2880x1800@90,0x0,1.5" ];
     wm.gdkScale = 1.5;
@@ -28,7 +26,7 @@ in
   terminal.zsh.host = "laptop";
 
   files.media.editors = true;
-  
+
   xdg.mimeApps.enable = true;
 
   nixpkgs.config.allowUnfree = true;

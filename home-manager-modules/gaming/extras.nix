@@ -1,15 +1,14 @@
-{lib, config, pkgs, inputs, ...}:
-let
-  cfg = config.gaming.extras;
+{ lib, config, pkgs, inputs, ... }:
+let cfg = config.gaming.extras;
 in with lib; {
   options.gaming.extras = {
     enable = mkEnableOption "Enables minecraft, lutris and osu";
 
-    minecraft = mkEnableOption "Enables PrismLauncher" // {default = true;};
-    osu = mkEnableOption "Enables OSU!Laser" // {default = true;};
-    lutris = mkEnableOption "Enables lutris" // {default = true;};
+    minecraft = mkEnableOption "Enables PrismLauncher" // { default = true; };
+    osu = mkEnableOption "Enables OSU!Laser" // { default = true; };
+    lutris = mkEnableOption "Enables lutris" // { default = true; };
     slippi = {
-      enable = mkEnableOption "Enable slippi launcher" // {default = true;};
+      enable = mkEnableOption "Enable slippi launcher" // { default = true; };
       isoPath = mkOption {
         default = ".roms/GC/ssbm.iso";
         description = "Melee's iso path";
@@ -17,7 +16,7 @@ in with lib; {
     };
   };
 
-  imports = [inputs.ssbm-nix.homeManagerModule];
+  imports = [ inputs.ssbm-nix.homeManagerModule ];
 
   config = mkIf cfg.enable {
     home.packages = [

@@ -1,6 +1,5 @@
-{lib, config, pkgs, ...}:
-let
-  cfg = config.vms;
+{ lib, config, pkgs, ... }:
+let cfg = config.vms;
 in with lib; {
   options.vms.enable = mkOption { default = true; };
 

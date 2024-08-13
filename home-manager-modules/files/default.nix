@@ -1,10 +1,6 @@
-{lib, config, ...}:
+{ lib, config, ... }:
 with lib; {
-  imports = [
-    ./file-manager.nix
-    ./compression.nix
-    ./media.nix
-  ];
+  imports = [ ./file-manager.nix ./compression.nix ./media.nix ];
 
   config.files = {
     fileManager.enable = mkDefault true;

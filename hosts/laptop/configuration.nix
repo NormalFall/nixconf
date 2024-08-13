@@ -3,57 +3,55 @@ let
   mainUser = "normal";
   modules = ../../modules;
   bundles = modules + "/bundles";
-in
-  {
-    imports =
-      [ 
-       ./hardware-configuration.nix
-        (bundles + /base-packages.nix)
-        (bundles + /fonts.nix)
-	(bundles + /nice-settings.nix)
-        (modules + /compat-tools)
-        (modules + /drivers)
-        (modules + /gaming)
-	(modules + /greetd)
-	(modules + /main-user)
-	(modules + /pipewire)
-        (modules + /privacy)
-        (modules + /vms)
-      ];
-  
-    boot.loader = {
-      efi = {
-        canTouchEfiVariables = true;
-        efiSysMountPoint = "/boot/efi";
-      };
-      grub = {
-        efiSupport = true;
-        device = "nodev";
-      };
+in {
+  imports = [
+    ./hardware-configuration.nix
+    (bundles + /base-packages.nix)
+    (bundles + /fonts.nix)
+    (bundles + /nice-settings.nix)
+    (modules + /compat-tools)
+    (modules + /drivers)
+    (modules + /gaming)
+    (modules + /greetd)
+    (modules + /main-user)
+    (modules + /pipewire)
+    (modules + /privacy)
+    (modules + /vms)
+  ];
+
+  boot.loader = {
+    efi = {
+      canTouchEfiVariables = true;
+      efiSysMountPoint = "/boot/efi";
     };
-
-    networking = {
-      hostName = "NixfoSum";
-      networkmanager.enable = true;
+    grub = {
+      efiSupport = true;
+      device = "nodev";
     };
+  };
 
-    drivers.laptop.enable = true;
-    drivers.logitech.enable = true;
+  networking = {
+    hostName = "NixfoSum";
+    networkmanager.enable = true;
+  };
 
-    greetd = {
-      command = "Hyprland";
-      greeter = "tuigreet";
+  drivers.laptop.enable = true;
+  drivers.logitech.enable = true;
+
+  greetd = {
+    command = "Hyprland";
+    greeter = "tuigreet";
+  };
+
+  mainUser = {
+    homeManager = {
+      enable = true;
+      config = ./home.nix;
     };
+    userName = mainUser;
+  };
 
-    mainUser = {
-      homeManager = {
-        enable = true;
-	config = ./home.nix;
-      };
-      userName = mainUser;
-    };
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
-    environment.sessionVariables.NIXOS_OZONE_WL = "1";
-
-    system.stateVersion = "23.11"; 
-  }
+  system.stateVersion = "23.11";
+}

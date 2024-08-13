@@ -8,15 +8,11 @@
     "col.active_border" = "0x77466494";
   };
 
-  decoration = {
-    rounding = 10;
-  };
+  decoration = { rounding = 10; };
 
   animations = {
     bezier = [ "overshot,0.05,0.9,0.1,1.1" ];
-    animation = [
-      "workspaces,1,8,overshot,slidevert"
-    ];
+    animation = [ "workspaces,1,8,overshot,slidevert" ];
   };
 
   layerrule = [ "blur,gtk-layer-shell" ];

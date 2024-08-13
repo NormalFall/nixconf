@@ -4,29 +4,28 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
-    ];
+  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
-  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "uas" "sd_mod" ];
+  boot.initrd.availableKernelModules =
+    [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "uas" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/a2a4cd7a-5243-46a8-ae3a-d31fc9174582";
-      fsType = "ext4";
-    };
+  fileSystems."/" = {
+    device = "/dev/disk/by-uuid/a2a4cd7a-5243-46a8-ae3a-d31fc9174582";
+    fsType = "ext4";
+  };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/12CE-A600";
-      fsType = "vfat";
-    };
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/12CE-A600";
+    fsType = "vfat";
+  };
 
-  fileSystems."/mnt/nvme" =
-    { device = "/dev/disk/by-uuid/da67c362-8714-41c9-a35c-fe37d49da01f";
-      fsType = "ext4";
-    };
+  fileSystems."/mnt/nvme" = {
+    device = "/dev/disk/by-uuid/da67c362-8714-41c9-a35c-fe37d49da01f";
+    fsType = "ext4";
+  };
 
   swapDevices = [ ];
 
@@ -47,5 +46,6 @@
   };
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.cpu.amd.updateMicrocode =
+    lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

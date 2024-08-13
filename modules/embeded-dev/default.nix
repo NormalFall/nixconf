@@ -1,6 +1,5 @@
-{config, lib, ...}:
-let
-  cfg = config.embededDev;
+{ config, lib, ... }:
+let cfg = config.embededDev;
 in with lib; {
   options.embededDev.enable = mkOption {
     default = true;
@@ -8,9 +7,9 @@ in with lib; {
   };
 
   config = mkIf cfg.enable {
-    users.groups.plugdev = {};
+    users.groups.plugdev = { };
     services.udev.extraRules = ''
-    ATTRS{idVendor}=="2e8a", ATTRS{idProduct}=="000c", MODE:="0666", GROUP="plugdev"
+      ATTRS{idVendor}=="2e8a", ATTRS{idProduct}=="000c", MODE:="0666", GROUP="plugdev"
     '';
   };
 }

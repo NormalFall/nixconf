@@ -1,8 +1,7 @@
-{lib, config, pkgs, ...}:
-let
-  cfg = config.hyprland.wm;
+{ lib, config, pkgs, ... }:
+let cfg = config.hyprland.wm;
 in with lib; {
-    
+
   options.hyprland.wm = with lib; {
     enable = mkEnableOption "Enables Hyprland";
     monitors = mkOption {
@@ -25,19 +24,20 @@ in with lib; {
     };
 
     exec = mkOption {
-      default = [];
+      default = [ ];
       description = "Basicly exec-once";
     };
 
     polkit = mkOption {
-      default = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+      default =
+        "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
       description = "Path of polkit agent";
     };
 
     touchScreen = mkEnableOption "Enables or disables touchscreens";
 
     extraKeybinds = mkOption {
-      default = [];
+      default = [ ];
       description = "Add additional keybinds for themes";
     };
 
@@ -45,29 +45,30 @@ in with lib; {
       default = null;
       description = "Wallpaper that hyprland uses";
     };
-    
+
     theme = mkOption {
-      default = {general = {}; animations = {}; decoration = {}; layerrule = {};};
+      default = {
+        general = { };
+        animations = { };
+        decoration = { };
+        layerrule = { };
+      };
       description = "Hyprland's style config";
     };
   };
 
-  imports = [
-    ./keybinds.nix
-    ./hyprexpo.nix
-  ];
+  imports = [ ./keybinds.nix ./hyprexpo.nix ];
 
   config = mkIf cfg.enable {
     home.packages = [ pkgs.xdg-utils ];
-    xdg.portal= {
+    xdg.portal = {
       enable = true;
-      extraPortals = [ pkgs.xdg-desktop-portal-hyprland pkgs.xdg-desktop-portal-gtk ];
+      extraPortals =
+        [ pkgs.xdg-desktop-portal-hyprland pkgs.xdg-desktop-portal-gtk ];
 
-      config = {
-        common.default = ["gtk" "hyprland"];
-      };
+      config = { common.default = [ "gtk" "hyprland" ]; };
     };
-    
+
     home.pointerCursor = {
       gtk.enable = true;
       size = cfg.cursor.size;
@@ -78,7 +79,7 @@ in with lib; {
     wayland.windowManager.hyprland = {
       enable = true;
       systemd = {
-        variables = ["--all"];
+        variables = [ "--all" ];
         extraCommands = [
           "systemctl --user stop graphical-session.target"
           "systemctl --user start hyprland-session.target"
@@ -93,17 +94,17 @@ in with lib; {
         exec-once = cfg.exec ++ [ cfg.polkit ];
 
         input.touchdevice.enabled = cfg.touchScreen;
-        
+
         env = [
-          "HYPRCURSOR_SIZE,${builtins.toString (builtins.toString (cfg.cursor.size))}"
+          "HYPRCURSOR_SIZE,${
+            builtins.toString (builtins.toString (cfg.cursor.size))
+          }"
           "GDK_SCALE,${builtins.toString cfg.gdkScale}"
         ];
 
         xwayland.force_zero_scaling = !cfg.fakeres;
 
-	general = ( cfg.theme.general // {
-	  sensitivity = 1;
-        });
+        general = (cfg.theme.general // { sensitivity = 1; });
 
         decoration = cfg.theme.decoration;
         animations = cfg.theme.animations;
@@ -115,13 +116,9 @@ in with lib; {
       enable = true;
 
       settings = {
-        wallpaper = [
-          ",${cfg.wallpaper}"
-        ];
+        wallpaper = [ ",${cfg.wallpaper}" ];
 
-        preload = [
-          "${cfg.wallpaper}"
-        ];
+        preload = [ "${cfg.wallpaper}" ];
       };
     };
   };

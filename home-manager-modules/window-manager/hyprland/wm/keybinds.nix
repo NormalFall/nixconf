@@ -1,5 +1,4 @@
-{pkgs, ...}:
-{
+{ pkgs, ... }: {
   wayland.windowManager.hyprland.settings = {
     bind = [
       #Apps
@@ -9,7 +8,7 @@
       "SUPER,F,fullscreen,0"
 
       #Lock
-      "SUPER,L,exec,loginctl lock-session"     
+      "SUPER,L,exec,loginctl lock-session"
 
       #Windows
       "SUPERSHIFT,F,fullscreen,1"
@@ -20,9 +19,11 @@
       "SUPER,P,pseudo,"
 
       #ScreenShots
-      "ALT,S,exec,GRIMBLAST_EDITOR=\"${pkgs.swappy}/bin/swappy -f\" ${pkgs.grimblast}/bin/grimblast edit screen"
-      "ALTSHIFT,S,exec,GRIMBLAST_EDITOR=\"${pkgs.swappy}/bin/swappy -f\" ${pkgs.grimblast}/bin/grimblast edit area"
-       
+      ''
+        ALT,S,exec,GRIMBLAST_EDITOR="${pkgs.swappy}/bin/swappy -f" ${pkgs.grimblast}/bin/grimblast edit screen''
+      ''
+        ALTSHIFT,S,exec,GRIMBLAST_EDITOR="${pkgs.swappy}/bin/swappy -f" ${pkgs.grimblast}/bin/grimblast edit area''
+
       #Audio
       ",XF86AudioLowerVolume,exec,${pkgs.pamixer}/bin/pamixer -d 5"
       ",XF86AudioRaiseVolume,exec, ${pkgs.pamixer}/bin/pamixer -i 5"
@@ -32,17 +33,17 @@
       #Brightness
       ",XF86MonBrightnessDown,exec,${pkgs.brightnessctl}/bin/brightnessctl s 10%-"
       ",XF86MonBrightnessUp,exec,${pkgs.brightnessctl}/bin/brightnessctl s +10%"
-        
+
       #Aim Focus
       "SUPER,left,movefocus,l"
       "SUPER,right,movefocus,r"
       "SUPER,up,movefocus,u"
       "SUPER,down,movefocus,d"
-      
+
       #Move workspace to other monitor
       "SUPER,Z,movecurrentworkspacetomonitor,+1"
       "SUPER,X,movecurrentworkspacetomonitor,-1"
-      
+
       #Workspaces
       "SUPER,1,workspace,1"
       "SUPER,2,workspace,2"
@@ -53,7 +54,7 @@
       "SUPER,7,workspace,7"
       "SUPER,8,workspace,8"
       "SUPER,9,workspace,9"
-      
+
       #Move window to
       "ALT,1,movetoworkspace,1"
       "ALT,2,movetoworkspace,2"
@@ -64,7 +65,7 @@
       "ALT,7,movetoworkspace,7"
       "ALT,8,movetoworkspace,8"
       "ALT,9,movetoworkspace,9"
-      
+
       #Mouse window manipulation
       "SUPERSHIFT,up, resizeactive,0 60"
       "SUPERSHIFT,down, resizeactive,0 -60"
@@ -72,9 +73,6 @@
       "SUPERSHIFT,right, resizeactive,60 0"
     ];
 
-    bindm = [
-      "SUPER, mouse:272, movewindow"
-      "SUPER, mouse:273, resizewindow"
-    ];
+    bindm = [ "SUPER, mouse:272, movewindow" "SUPER, mouse:273, resizewindow" ];
   };
 }

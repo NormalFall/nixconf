@@ -1,8 +1,6 @@
 { config, pkgs, userName, ... }:
-let
-  modules = ../../home-manager-modules;
-in
-{
+let modules = ../../home-manager-modules;
+in {
   home.username = userName;
   home.homeDirectory = "/home/${userName}";
 
