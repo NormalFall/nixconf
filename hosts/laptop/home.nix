@@ -15,6 +15,7 @@ in
     (modules + /window-manager/hyprland)
     (modules + /terminal)
     (modules + /apps)
+    (modules + /utilities)
   ];
   
   hyprland = {
