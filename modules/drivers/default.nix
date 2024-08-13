@@ -31,6 +31,5 @@ with lib; {
     services.power-profiles-daemon.enable = cfg.laptop.enable;
 
     services.ratbagd.enable = cfg.logitech.enable;
-    environment.systemPackages = (if cfg.logitech.enable then [ pkgs.solaar pkgs.piper ] else []);
   };
 }
