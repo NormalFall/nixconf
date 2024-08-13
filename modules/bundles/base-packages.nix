@@ -11,6 +11,7 @@
       btop
       killall
       nh
+      nixfmt
     ];
   };
 }
