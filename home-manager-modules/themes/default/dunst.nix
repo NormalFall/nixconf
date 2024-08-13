@@ -1,5 +1,4 @@
-{config, ...}:
-{
+{ config, ... }: {
   config = {
     services.dunst.enable = true;
     services.dunst.settings = {
@@ -16,7 +15,10 @@
         font = "Mononoki Nerd Font 12";
         markup = "full";
 
-        format = "<b>%a</b>\n<i>%s</i>\n%b";
+        format = ''
+          <b>%a</b>
+          <i>%s</i>
+          %b'';
         corner_radius = 7;
         icon_corner_radius = 4;
         min_icon_size = 200;

@@ -1,14 +1,11 @@
-{lib, config, ...}:
-let
-  cfg = config.hyprland;
+{ lib, config, ... }:
+let cfg = config.hyprland;
 in with lib; {
-  options.hyprland.enable = mkEnableOption "Enables Hyprland's ecosystem" // {default = true;};
+  options.hyprland.enable = mkEnableOption "Enables Hyprland's ecosystem" // {
+    default = true;
+  };
 
-  imports = [
-    ./wm
-    ./idle.nix
-    ./lock.nix
-  ];
+  imports = [ ./wm ./idle.nix ./lock.nix ];
 
   config = mkIf cfg.enable {
     hyprland.wm.enable = mkDefault true;

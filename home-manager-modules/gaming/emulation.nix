@@ -1,4 +1,4 @@
-{lib, config, pkgs, ...}:
+{ lib, config, pkgs, ... }:
 let
   cfg = config.gaming.emulation;
 
@@ -25,15 +25,17 @@ let
 
 in with lib; {
   options.gaming.emulation = {
-    enable = mkEnableOption "Enables dolphin, ryujinx and other common emulators";
+    enable =
+      mkEnableOption "Enables dolphin, ryujinx and other common emulators";
 
     exclude = mkOption {
-      default = [];
+      default = [ ];
       description = "list of name of excluded consoles";
-    };  
+    };
   };
 
   config = mkIf cfg.enable {
-    home.packages = (builtins.attrValues (builtins.removeAttrs emulatorPkgs cfg.exclude));
+    home.packages =
+      (builtins.attrValues (builtins.removeAttrs emulatorPkgs cfg.exclude));
   };
 }

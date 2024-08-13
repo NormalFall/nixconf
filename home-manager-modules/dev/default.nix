@@ -1,9 +1,6 @@
-{lib, config, ...}:
+{ lib, config, ... }:
 with lib; {
-  imports = [
-    ./network-tools.nix
-    ./vscodium.nix
-  ];
+  imports = [ ./network-tools.nix ./vscodium.nix ];
 
   config = {
     dev.networkTools.enable = mkDefault true;

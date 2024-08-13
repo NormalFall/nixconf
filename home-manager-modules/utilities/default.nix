@@ -1,14 +1,12 @@
-{lib, config, ...}:
-let
-  cfg = config.utilities;
+{ lib, config, ... }:
+let cfg = config.utilities;
 in with lib; {
-  options.utilities.enable = mkEnableOption "Enables tooling to manage system" // {default = true;};
+  options.utilities.enable = mkEnableOption "Enables tooling to manage system"
+    // {
+      default = true;
+    };
 
-  imports = [
-    ./audio.nix
-    ./disk.nix
-    ./peripherals.nix
-  ];
+  imports = [ ./audio.nix ./disk.nix ./peripherals.nix ];
 
   config = mkIf cfg.enable {
     utilities.audio.enable = mkDefault true;

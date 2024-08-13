@@ -1,9 +1,7 @@
 # Add a noise filter option
-{lib, config, pkgs, ...}:
-let
-  cfg = config.pipewire;
-in
-with lib; {
+{ lib, config, pkgs, ... }:
+let cfg = config.pipewire;
+in with lib; {
   options.pipewire.enable = mkOption { default = true; };
 
   config = mkIf cfg.enable {
@@ -18,9 +16,7 @@ with lib; {
       # Camera fix
       wireplumber.extraConfig = {
         "10-disable-camera" = {
-          "wireplumber.profiles" = {
-            main."monitor.libcamera" = "disabled";
-          };
+          "wireplumber.profiles" = { main."monitor.libcamera" = "disabled"; };
         };
       };
     };

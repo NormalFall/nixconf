@@ -1,11 +1,8 @@
-{lib, config, pkgs, ...}:
+{ lib, config, pkgs, ... }:
 let
   cfg = config.gaming.steam;
 
-  extraSteamPackage = with pkgs; [
-    gamescope
-    mangohud
-  ];
+  extraSteamPackage = with pkgs; [ gamescope mangohud ];
 
 in with lib; {
   options.gaming.steam = {
@@ -15,7 +12,7 @@ in with lib; {
   };
 
   config = mkIf cfg.enable {
-    home.packages = [pkgs.steam]
-    ++ (if cfg.enableExtraPackages then extraSteamPackage else []);
+    home.packages = [ pkgs.steam ]
+      ++ (if cfg.enableExtraPackages then extraSteamPackage else [ ]);
   };
 }

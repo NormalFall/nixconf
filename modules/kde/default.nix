@@ -1,6 +1,5 @@
-{lib, config, pkgs, ...}:
-let
-  cfg = config.kde;
+{ lib, config, pkgs, ... }:
+let cfg = config.kde;
 in with lib; {
   options.kde = {
     enable = mkOption { default = true; };
@@ -13,13 +12,13 @@ in with lib; {
     kbLayout = mkOption {
       default = "us";
       type = types.str;
-      description = ''Set x11 keyboard layout'';
+      description = "Set x11 keyboard layout";
     };
   };
 
   config = mkIf cfg.enable {
     services.xserver = {
-      displayManager.sddm.enable = cfg.sddm;     
+      displayManager.sddm.enable = cfg.sddm;
       enable = true;
       desktopManager.plasma5.enable = true;
     };

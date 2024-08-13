@@ -1,17 +1,13 @@
 { lib, config, pkgs, inputs, ... }:
 
-let
-  cfg = config.mainUser;
-in
-with lib; {
+let cfg = config.mainUser;
+in with lib; {
   options.mainUser = {
     enable = mkOption { default = true; };
 
     homeManager = {
       enable = mkEnableOption "enables home-manager for main user";
-      config = mkOption {
-	description = "location of your home.nix";
-      };
+      config = mkOption { description = "location of your home.nix"; };
     };
 
     shell = mkOption {
@@ -31,13 +27,7 @@ with lib; {
     users.users.${cfg.userName} = {
       isNormalUser = true;
       initialPassword = "nixos";
-      extraGroups = [
-        "networkmanager"
-        "wheel"
-        "libvirtd"
-        "dialout"
-        "plugdev"
-      ];
+      extraGroups = [ "networkmanager" "wheel" "libvirtd" "dialout" "plugdev" ];
       shell = pkgs.${cfg.shell};
     };
 

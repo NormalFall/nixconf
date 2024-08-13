@@ -1,9 +1,7 @@
-{lib, config, pkgs, ...}:
-let
-  cfg = config.hyprland.idle;
-in
-  with lib; {
-   options.hyprland.idle = with lib; {
+{ lib, config, pkgs, ... }:
+let cfg = config.hyprland.idle;
+in with lib; {
+  options.hyprland.idle = with lib; {
     enable = mkEnableOption "Enables hypridle";
 
     lockBeforeSleep = mkOption { default = true; };
@@ -22,11 +20,11 @@ in
       default = 200;
       description = "Closes screen without going into sleep";
     };
-      
+
     sleepTime = mkOption {
       default = 600;
       description = "Time before sleep";
-    }; 
+    };
   };
 
   config = mkIf cfg.enable {
@@ -36,8 +34,10 @@ in
         listener = [
           (mkIf (cfg.dimTime != null) {
             timeout = cfg.dimTime;
-            on-timeout = "${pkgs.brightnessctl}/bin/brightnessctl s 5% -s & ${pkgs.brightnessctl}/bin/brightnessctl -d *::kbd_backlight s 0 -s";
-            on-resume = "${pkgs.brightnessctl}/bin/brightnessctl -r & ${pkgs.brightnessctl}/bin/brightnessctl -d *::kbd_backlight -r";
+            on-timeout =
+              "${pkgs.brightnessctl}/bin/brightnessctl s 5% -s & ${pkgs.brightnessctl}/bin/brightnessctl -d *::kbd_backlight s 0 -s";
+            on-resume =
+              "${pkgs.brightnessctl}/bin/brightnessctl -r & ${pkgs.brightnessctl}/bin/brightnessctl -d *::kbd_backlight -r";
           })
 
           (mkIf (cfg.lockTime != null) {
@@ -59,9 +59,8 @@ in
 
         general = {
           lock_cmd = "${pkgs.hyprlock}/bin/hyprlock";
-          before_sleep_cmd = if cfg.lockBeforeSleep
-            then "loginctl lock-session"
-            else "";
+          before_sleep_cmd =
+            if cfg.lockBeforeSleep then "loginctl lock-session" else "";
         };
       };
     };

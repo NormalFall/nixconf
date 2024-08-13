@@ -1,14 +1,8 @@
-{lib, config, ...}:
-let
-  cfg = config.terminal;
+{ lib, config, ... }:
+let cfg = config.terminal;
 in with lib; {
   options.terminal.enableAll = mkOption { default = true; };
-  imports = [
-    ./kitty
-    ./nixvim
-    ./zsh
-    ./nh
-  ];
+  imports = [ ./kitty ./nixvim ./zsh ./nh ];
 
   config.terminal = mkIf cfg.enableAll {
     kitty.enable = mkDefault true;
