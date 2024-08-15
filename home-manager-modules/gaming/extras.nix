@@ -21,8 +21,8 @@ in with lib; {
   config = mkIf cfg.enable {
     home.packages = [
       (mkIf cfg.minecraft pkgs.prismlauncher)
-      (mkIf cfg.osu pkgs.prismlauncher)
-      (mkIf cfg.lutris pkgs.prismlauncher)
+      (mkIf cfg.osu pkgs.osu-lazer-bin)
+      (mkIf cfg.lutris pkgs.lutris)
     ];
 
     ssbm.slippi-launcher = {
