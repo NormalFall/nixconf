@@ -14,6 +14,6 @@ in with lib; {
 
   config = {
     home.packages = lists.subtractLists cfg.exclude
-      (with pkgs; [ kicad-unstable fritzing prusa-slicer ]);
+      (with pkgs; [ kicad fritzing prusa-slicer ]);
   };
 }
