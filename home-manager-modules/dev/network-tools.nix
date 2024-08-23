@@ -1,4 +1,9 @@
-{ lib, config, pkgs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 let
   cfg = config.dev.networkTools;
 
@@ -15,7 +20,10 @@ let
   apiPkgs = {
     free = with pkgs; [ insomnia ];
 
-    unfree = with pkgs; [ postman charles3 ];
+    unfree = with pkgs; [
+      postman
+      charles3
+    ];
   };
 
   sniffPkgs = {
@@ -24,7 +32,9 @@ let
     unfree = [ ];
   };
 
-in with lib; {
+in
+with lib;
+{
   options.dev.networkTools = {
     enable = mkEnableOption "Gives a usefull list of networking tools";
 
@@ -59,15 +69,12 @@ in with lib; {
   };
 
   config = mkIf cfg.enable {
-    home.packages = lists.subtractLists cfg.exclude ((if cfg.basic then
-      (if cfg.allowUnfree then basicPkgs.unfree else [ ]) ++ basicPkgs.free
-    else
-      [ ]) ++ (if cfg.api then
-        (if cfg.allowUnfree then apiPkgs.unfree else [ ]) ++ apiPkgs.free
-      else
-        [ ]) ++ (if cfg.sniff then
-          (if cfg.allowUnfree then sniffPkgs.unfree else [ ]) ++ sniffPkgs.free
-        else
-          [ ]));
+    home.packages = lists.subtractLists cfg.exclude (
+      (if cfg.basic then (if cfg.allowUnfree then basicPkgs.unfree else [ ]) ++ basicPkgs.free else [ ])
+      ++ (if cfg.api then (if cfg.allowUnfree then apiPkgs.unfree else [ ]) ++ apiPkgs.free else [ ])
+      ++ (
+        if cfg.sniff then (if cfg.allowUnfree then sniffPkgs.unfree else [ ]) ++ sniffPkgs.free else [ ]
+      )
+    );
   };
 }

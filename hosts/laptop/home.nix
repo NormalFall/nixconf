@@ -1,6 +1,13 @@
-{ config, pkgs, userName, ... }:
-let modules = ../../home-manager-modules;
-in {
+{
+  config,
+  pkgs,
+  userName,
+  ...
+}:
+let
+  modules = ../../home-manager-modules;
+in
+{
   home.username = userName;
   home.homeDirectory = "/home/${userName}";
 
@@ -33,4 +40,3 @@ in {
   home.stateVersion = "23.11"; # Please read the comment before changing.
   programs.home-manager.enable = true;
 }
-

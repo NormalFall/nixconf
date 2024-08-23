@@ -1,4 +1,9 @@
-{ lib, config, pkgs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 let
   cfg = config.dev.vscodium;
 
@@ -26,7 +31,9 @@ let
     # Quality of life
     esbenp.prettier-vscode
   ];
-in with lib; {
+in
+with lib;
+{
   options.dev.vscodium = {
     enable = mkEnableOption "Enables vscodium";
     # Add theme options later
@@ -40,7 +47,9 @@ in with lib; {
       enableUpdateCheck = false;
       enableExtensionUpdateCheck = false;
 
-      userSettings = { "window.titleBarStyle" = "custom"; };
+      userSettings = {
+        "window.titleBarStyle" = "custom";
+      };
 
       inherit extensions;
     };

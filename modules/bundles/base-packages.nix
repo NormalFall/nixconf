@@ -1,4 +1,5 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }:
+{
   config = {
     environment.systemPackages = with pkgs; [
       fastfetch

@@ -3,7 +3,8 @@ let
   mainUser = "normal";
   modules = ../../modules;
   bundles = modules + "/bundles";
-in {
+in
+{
   imports = [
     ./hardware-configuration.nix
     (bundles + /base-packages.nix)

@@ -1,4 +1,9 @@
-{ lib, config, pkgs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 let
   cfg = config.gaming.emulation;
 
@@ -23,10 +28,11 @@ let
     ps2 = pcsx2;
   };
 
-in with lib; {
+in
+with lib;
+{
   options.gaming.emulation = {
-    enable =
-      mkEnableOption "Enables dolphin, ryujinx and other common emulators";
+    enable = mkEnableOption "Enables dolphin, ryujinx and other common emulators";
 
     exclude = mkOption {
       default = [ ];
@@ -35,7 +41,6 @@ in with lib; {
   };
 
   config = mkIf cfg.enable {
-    home.packages =
-      (builtins.attrValues (builtins.removeAttrs emulatorPkgs cfg.exclude));
+    home.packages = (builtins.attrValues (builtins.removeAttrs emulatorPkgs cfg.exclude));
   };
 }

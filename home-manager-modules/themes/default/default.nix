@@ -1,6 +1,8 @@
 { pkgs, ... }:
-let Modules = ../..;
-in {
+let
+  Modules = ../..;
+in
+{
   imports = [
     (Modules + /window-manager/hyprland)
     (Modules + /terminal/kitty)
@@ -16,6 +18,5 @@ in {
     ./qt.nix
   ];
 
-  config.hyprland.wm.extraKeybinds =
-    [ "SUPER,R,exec,${pkgs.nwg-drawer}/bin/nwg-drawer" ];
+  config.hyprland.wm.extraKeybinds = [ "SUPER,R,exec,${pkgs.nwg-drawer}/bin/nwg-drawer" ];
 }

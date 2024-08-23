@@ -1,6 +1,14 @@
-{ lib, config, pkgs, ... }:
-let cfg = config.hyprland.idle;
-in with lib; {
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
+let
+  cfg = config.hyprland.idle;
+in
+with lib;
+{
   options.hyprland.idle = with lib; {
     enable = mkEnableOption "Enables hypridle";
 
@@ -34,10 +42,8 @@ in with lib; {
         listener = [
           (mkIf (cfg.dimTime != null) {
             timeout = cfg.dimTime;
-            on-timeout =
-              "${pkgs.brightnessctl}/bin/brightnessctl s 5% -s & ${pkgs.brightnessctl}/bin/brightnessctl -d *::kbd_backlight s 0 -s";
-            on-resume =
-              "${pkgs.brightnessctl}/bin/brightnessctl -r & ${pkgs.brightnessctl}/bin/brightnessctl -d *::kbd_backlight -r";
+            on-timeout = "${pkgs.brightnessctl}/bin/brightnessctl s 5% -s & ${pkgs.brightnessctl}/bin/brightnessctl -d *::kbd_backlight s 0 -s";
+            on-resume = "${pkgs.brightnessctl}/bin/brightnessctl -r & ${pkgs.brightnessctl}/bin/brightnessctl -d *::kbd_backlight -r";
           })
 
           (mkIf (cfg.lockTime != null) {
@@ -59,8 +65,7 @@ in with lib; {
 
         general = {
           lock_cmd = "${pkgs.hyprlock}/bin/hyprlock";
-          before_sleep_cmd =
-            if cfg.lockBeforeSleep then "loginctl lock-session" else "";
+          before_sleep_cmd = if cfg.lockBeforeSleep then "loginctl lock-session" else "";
         };
       };
     };

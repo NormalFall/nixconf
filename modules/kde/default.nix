@@ -1,6 +1,14 @@
-{ lib, config, pkgs, ... }:
-let cfg = config.kde;
-in with lib; {
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
+let
+  cfg = config.kde;
+in
+with lib;
+{
   options.kde = {
     enable = mkOption { default = true; };
 

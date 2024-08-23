@@ -5,23 +5,42 @@
     height = 24;
     spacing = 5;
 
-    modules-left = [ "hyprland/workspaces" "group/usage" ];
+    modules-left = [
+      "hyprland/workspaces"
+      "group/usage"
+    ];
     modules-center = [ "clock" ];
-    modules-right = [ "pulseaudio" "group/bat" "group/net" "tray" ];
+    modules-right = [
+      "pulseaudio"
+      "group/bat"
+      "group/net"
+      "tray"
+    ];
 
     "group/usage" = {
       orientation = "horizontal";
-      modules = [ "memory" "cpu" "temperature" ];
+      modules = [
+        "memory"
+        "cpu"
+        "temperature"
+      ];
     };
 
     "group/bat" = {
       orientation = "horizontal";
-      modules = [ "power-profiles-daemon" "battery" "backlight" ];
+      modules = [
+        "power-profiles-daemon"
+        "battery"
+        "backlight"
+      ];
     };
 
     "group/net" = {
       orientation = "horizontal";
-      modules = [ "network" "bluetooth" ];
+      modules = [
+        "network"
+        "bluetooth"
+      ];
     };
 
     "hyprland/workspaces" = {
@@ -37,7 +56,9 @@
       };
     };
 
-    clock = { format = "{:%d.%m.%Y | %H:%M}"; };
+    clock = {
+      format = "{:%d.%m.%Y | %H:%M}";
+    };
 
     pulseaudio = {
       format = "󰕾  {volume}%";
@@ -49,7 +70,13 @@
       bat = "BATT";
       interval = 60;
       format = "{icon}  {capacity}%";
-      format-icons = [ "" "" "" "" "" ];
+      format-icons = [
+        ""
+        ""
+        ""
+        ""
+        ""
+      ];
     };
 
     power-profiles-daemon = {
@@ -66,7 +93,9 @@
       };
     };
 
-    backlight = { format = "󰃟  {percent}%"; };
+    backlight = {
+      format = "󰃟  {percent}%";
+    };
 
     memory = {
       interval = 10;
@@ -78,14 +107,22 @@
       format = "  {}%";
     };
 
-    temperature = { format = " {temperatureC}°C"; };
+    temperature = {
+      format = " {temperatureC}°C";
+    };
 
     "network" = {
       format = "";
       format-ethernet = "󰈀 ";
       format-wifi = "{icon} ";
       format-disconnected = "󰲜 ";
-      format-icons = [ "󰤯" "󰤟" "󰤢" "󰤥" "󰤨" ];
+      format-icons = [
+        "󰤯"
+        "󰤟"
+        "󰤢"
+        "󰤥"
+        "󰤨"
+      ];
       tooltip-format-wifi = "{essid} ({signalStrength}%)";
       tooltip-format-ethernet = "{ifname}";
       tooltip-format-disconnected = "Disconnected";

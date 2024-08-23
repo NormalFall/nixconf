@@ -1,6 +1,14 @@
-{ lib, config, pkgs, ... }:
-let cfg = config.greetd;
-in with lib; {
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
+let
+  cfg = config.greetd;
+in
+with lib;
+{
   options.greetd = {
     enable = mkOption { default = true; };
 
@@ -19,8 +27,7 @@ in with lib; {
     services.greetd = {
       enable = true;
 
-      settings.default_session.command =
-        "${pkgs.greetd.${cfg.greeter}}/bin/${cfg.greeter} --cmd ${cfg.command}";
+      settings.default_session.command = "${pkgs.greetd.${cfg.greeter}}/bin/${cfg.greeter} --cmd ${cfg.command}";
     };
   };
 }
