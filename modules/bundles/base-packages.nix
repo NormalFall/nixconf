@@ -11,7 +11,7 @@
       btop
       killall
       nh
-      nixfmt
+      nixfmt-rfc-style
     ];
   };
 }
