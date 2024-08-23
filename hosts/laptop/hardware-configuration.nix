@@ -40,7 +40,7 @@
     powerOnBoot = true;
   };
 
-  boot.kernelPackages = pkgs.linuxPackages_6_8;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode =
