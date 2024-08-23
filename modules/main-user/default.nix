@@ -1,7 +1,16 @@
-{ lib, config, pkgs, inputs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
-let cfg = config.mainUser;
-in with lib; {
+let
+  cfg = config.mainUser;
+in
+with lib;
+{
   options.mainUser = {
     enable = mkOption { default = true; };
 
@@ -27,7 +36,13 @@ in with lib; {
     users.users.${cfg.userName} = {
       isNormalUser = true;
       initialPassword = "nixos";
-      extraGroups = [ "networkmanager" "wheel" "libvirtd" "dialout" "plugdev" ];
+      extraGroups = [
+        "networkmanager"
+        "wheel"
+        "libvirtd"
+        "dialout"
+        "plugdev"
+      ];
       shell = pkgs.${cfg.shell};
     };
 

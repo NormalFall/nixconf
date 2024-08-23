@@ -1,6 +1,14 @@
-{ lib, config, pkgs, ... }:
-let cfg = config.drivers;
-in with lib; {
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
+let
+  cfg = config.drivers;
+in
+with lib;
+{
   options.drivers = {
     disks = {
       enable = mkOption {
@@ -11,8 +19,7 @@ in with lib; {
       extraPartitionFormats = mkOption { default = true; };
     };
 
-    logitech.enable =
-      mkEnableOption "Enables drivers for logitechG and logitech mouses";
+    logitech.enable = mkEnableOption "Enables drivers for logitechG and logitech mouses";
 
     laptop = {
       # Add asus UM3402YA drivers

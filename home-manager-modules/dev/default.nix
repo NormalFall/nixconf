@@ -1,6 +1,11 @@
 { lib, config, ... }:
-with lib; {
-  imports = [ ./network-tools.nix ./vscodium.nix ./android.nix ];
+with lib;
+{
+  imports = [
+    ./network-tools.nix
+    ./vscodium.nix
+    ./android.nix
+  ];
 
   config = {
     dev.networkTools.enable = mkDefault true;

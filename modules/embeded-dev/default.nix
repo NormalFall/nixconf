@@ -1,6 +1,9 @@
 { config, lib, ... }:
-let cfg = config.embededDev;
-in with lib; {
+let
+  cfg = config.embededDev;
+in
+with lib;
+{
   options.embededDev.enable = mkOption {
     default = true;
     description = "Makes udev rules for various embeded plaforms";

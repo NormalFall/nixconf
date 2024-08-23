@@ -1,1 +1,6 @@
-{ config, pkgs, ... }: { config = { home.packages = [ pkgs.inkscape ]; }; }
+{ config, pkgs, ... }:
+{
+  config = {
+    home.packages = [ pkgs.inkscape ];
+  };
+}

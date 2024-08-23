@@ -1,1 +1,4 @@
-{ ... }: { config.terminal.zsh.theme = "agnoster"; }
+{ ... }:
+{
+  config.terminal.zsh.theme = "agnoster";
+}

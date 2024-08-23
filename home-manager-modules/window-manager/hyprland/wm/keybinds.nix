@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   wayland.windowManager.hyprland.settings = {
     bind = [
       #Apps
@@ -19,10 +20,8 @@
       "SUPER,P,pseudo,"
 
       #ScreenShots
-      ''
-        ALT,S,exec,GRIMBLAST_EDITOR="${pkgs.swappy}/bin/swappy -f" ${pkgs.grimblast}/bin/grimblast edit screen''
-      ''
-        ALTSHIFT,S,exec,GRIMBLAST_EDITOR="${pkgs.swappy}/bin/swappy -f" ${pkgs.grimblast}/bin/grimblast edit area''
+      ''ALT,S,exec,GRIMBLAST_EDITOR="${pkgs.swappy}/bin/swappy -f" ${pkgs.grimblast}/bin/grimblast edit screen''
+      ''ALTSHIFT,S,exec,GRIMBLAST_EDITOR="${pkgs.swappy}/bin/swappy -f" ${pkgs.grimblast}/bin/grimblast edit area''
 
       #Audio
       ",XF86AudioLowerVolume,exec,${pkgs.pamixer}/bin/pamixer -d 5"
@@ -73,6 +72,9 @@
       "SUPERSHIFT,right, resizeactive,60 0"
     ];
 
-    bindm = [ "SUPER, mouse:272, movewindow" "SUPER, mouse:273, resizewindow" ];
+    bindm = [
+      "SUPER, mouse:272, movewindow"
+      "SUPER, mouse:273, resizewindow"
+    ];
   };
 }

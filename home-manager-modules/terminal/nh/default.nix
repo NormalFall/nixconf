@@ -1,6 +1,15 @@
-{ lib, config, pkgs, userName, ... }:
-let cfg = config.terminal.nh;
-in with lib; {
+{
+  lib,
+  config,
+  pkgs,
+  userName,
+  ...
+}:
+let
+  cfg = config.terminal.nh;
+in
+with lib;
+{
   options.terminal.nh = {
     enable = mkEnableOption "Enable nh";
     flake = mkOption {
@@ -11,6 +20,8 @@ in with lib; {
 
   config.home = mkIf cfg.enable {
     packages = [ pkgs.nh ];
-    sessionVariables = { FLAKE = cfg.flake; };
+    sessionVariables = {
+      FLAKE = cfg.flake;
+    };
   };
 }

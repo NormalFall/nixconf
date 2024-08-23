@@ -1,6 +1,14 @@
-{ lib, config, pkgs, ... }:
-let cfg = config.hyprland.wm;
-in with lib; {
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
+let
+  cfg = config.hyprland.wm;
+in
+with lib;
+{
 
   options.hyprland.wm = with lib; {
     enable = mkEnableOption "Enables Hyprland";
@@ -29,8 +37,7 @@ in with lib; {
     };
 
     polkit = mkOption {
-      default =
-        "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+      default = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
       description = "Path of polkit agent";
     };
 
@@ -57,16 +64,26 @@ in with lib; {
     };
   };
 
-  imports = [ ./keybinds.nix ./hyprexpo.nix ];
+  imports = [
+    ./keybinds.nix
+    ./hyprexpo.nix
+  ];
 
   config = mkIf cfg.enable {
     home.packages = [ pkgs.xdg-utils ];
     xdg.portal = {
       enable = true;
-      extraPortals =
-        [ pkgs.xdg-desktop-portal-hyprland pkgs.xdg-desktop-portal-gtk ];
+      extraPortals = [
+        pkgs.xdg-desktop-portal-hyprland
+        pkgs.xdg-desktop-portal-gtk
+      ];
 
-      config = { common.default = [ "gtk" "hyprland" ]; };
+      config = {
+        common.default = [
+          "gtk"
+          "hyprland"
+        ];
+      };
     };
 
     home.pointerCursor = {
@@ -96,9 +113,7 @@ in with lib; {
         input.touchdevice.enabled = cfg.touchScreen;
 
         env = [
-          "HYPRCURSOR_SIZE,${
-            builtins.toString (builtins.toString (cfg.cursor.size))
-          }"
+          "HYPRCURSOR_SIZE,${builtins.toString (builtins.toString (cfg.cursor.size))}"
           "GDK_SCALE,${builtins.toString cfg.gdkScale}"
         ];
 

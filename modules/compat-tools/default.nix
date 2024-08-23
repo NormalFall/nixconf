@@ -1,6 +1,15 @@
-{ lib, config, pkgs, inputs, ... }:
-let cfg = config.compat-tools;
-in with lib; {
+{
+  lib,
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
+let
+  cfg = config.compat-tools;
+in
+with lib;
+{
   options.compat-tools = {
     enable = mkOption {
       default = true;
@@ -21,10 +30,7 @@ in with lib; {
   config = mkIf cfg.enable {
     environment.systemPackages =
       (if cfg.appimage then [ pkgs.appimage-run ] else [ ])
-      ++ (if cfg.nix-alien then
-        [ inputs.nix-alien.packages.x86_64-linux.nix-alien ]
-      else
-        [ ]);
+      ++ (if cfg.nix-alien then [ inputs.nix-alien.packages.x86_64-linux.nix-alien ] else [ ]);
 
     programs.nix-ld.enable = cfg.nix-alien;
   };

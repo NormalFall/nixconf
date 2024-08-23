@@ -1,6 +1,14 @@
-{ lib, config, pkgs, ... }:
-let cfg = config.cad;
-in with lib; {
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
+let
+  cfg = config.cad;
+in
+with lib;
+{
   options.cad = {
     enable = mkOption {
       default = true;
@@ -13,7 +21,13 @@ in with lib; {
   };
 
   config = {
-    home.packages = lists.subtractLists cfg.exclude
-      (with pkgs; [ kicad fritzing prusa-slicer ]);
+    home.packages = lists.subtractLists cfg.exclude (
+      with pkgs;
+      [
+        kicad
+        fritzing
+        prusa-slicer
+      ]
+    );
   };
 }

@@ -1,6 +1,14 @@
-{ lib, config, pkgs, ... }:
-let cfg = config.terminal.zsh;
-in with lib; {
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
+let
+  cfg = config.terminal.zsh;
+in
+with lib;
+{
   options.terminal.zsh = {
     enable = mkEnableOption "Enables zsh";
     host = mkOption {
