@@ -24,7 +24,7 @@ let
 
     # Sony
     psp = ppsspp;
-    ps1 = pcsxr;
+    ps1 = duckstation;
     ps2 = pcsx2;
   };
 
