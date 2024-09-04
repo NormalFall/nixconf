@@ -9,6 +9,7 @@
   };
 
   decoration = {
+    blur.enabled = "off";
     rounding = 10;
   };
 
