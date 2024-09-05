@@ -24,7 +24,7 @@ in
   ];
 
   hyprland = {
-    wm.monitors = [ "eDP-1, 2880x1800@90,0x0,1.5" ];
+    wm.monitors = [ "eDP-1, 1920x1200@90,0x0,1" ];
     wm.gdkScale = 1.5;
     idle.enable = true;
     idle.dimTime = 100;
