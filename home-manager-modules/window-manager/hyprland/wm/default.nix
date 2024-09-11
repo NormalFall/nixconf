@@ -119,7 +119,7 @@ with lib;
 
         xwayland.force_zero_scaling = !cfg.fakeres;
 
-        general = (cfg.theme.general // { sensitivity = 1; });
+        general = cfg.theme.general;
 
         decoration = cfg.theme.decoration;
         animations = cfg.theme.animations;
