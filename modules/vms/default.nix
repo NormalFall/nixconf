@@ -13,6 +13,7 @@ with lib;
 
   config = mkIf cfg.enable {
     virtualisation.libvirtd.enable = true;
+    virtualisation.spiceUSBRedirection.enable = true;
     programs.virt-manager.enable = true;
   };
 }
