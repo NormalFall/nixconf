@@ -17,5 +17,7 @@ with lib;
 
     programs.mtr.enable = true;
     programs.dconf.enable = true;
+
+    networking.firewall.enable = false;
   };
 }
