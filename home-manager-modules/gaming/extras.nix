@@ -3,6 +3,7 @@
   config,
   pkgs,
   inputs,
+  userName,
   ...
 }:
 let
@@ -27,7 +28,7 @@ with lib;
         default = true;
       };
       isoPath = mkOption {
-        default = ".roms/GC/ssbm.iso";
+        default = "/home/${userName}/.roms/GC/ssbm.iso";
         description = "Melee's iso path";
       };
     };
