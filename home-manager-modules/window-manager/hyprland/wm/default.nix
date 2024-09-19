@@ -98,8 +98,7 @@ with lib;
       systemd = {
         variables = [ "--all" ];
         extraCommands = [
-          "systemctl --user stop graphical-session.target"
-          "sleep 0.5 && systemctl --user start hyprland-session.target"
+          "systemctl --user stop graphical-session.target && systemctl --user start hyprland-session.target"
         ];
       };
 
@@ -111,6 +110,8 @@ with lib;
         exec-once = cfg.exec ++ [ cfg.polkit ];
 
         input.touchdevice.enabled = cfg.touchScreen;
+
+        gestures.workspace_swipe = true;
 
         env = [
           "HYPRCURSOR_SIZE,${builtins.toString (builtins.toString (cfg.cursor.size))}"
