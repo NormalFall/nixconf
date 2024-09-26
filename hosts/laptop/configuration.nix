@@ -37,7 +37,7 @@ in
   };
 
   drivers.laptop.enable = true;
-  drivers.logitech.enable = true;
+  drivers.peripherals.logitech.enable = true;
 
   greetd = {
     command = "Hyprland";
