@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 {
   config = {
-    home.packages = [ pkgs.inkscape ];
+    home.packages = [ pkgs.teams-for-linux ];
   };
 }
