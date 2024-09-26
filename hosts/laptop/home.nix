@@ -21,6 +21,7 @@ in
     (modules + /terminal)
     (modules + /apps)
     (modules + /utilities)
+    (modules + /school)
   ];
 
   hyprland = {
