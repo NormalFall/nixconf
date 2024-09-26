@@ -107,7 +107,10 @@ with lib;
 
         bind = cfg.extraKeybinds;
 
-        exec-once = cfg.exec ++ [ cfg.polkit ];
+        exec-once = cfg.exec ++ [
+          cfg.polkit 
+          "${pkgs.wl-clip-persist}/bin/wl-clip-persist --clipboard both" # Make clipboard outlive windows
+        ];
 
         input.touchdevice.enabled = cfg.touchScreen;
 
