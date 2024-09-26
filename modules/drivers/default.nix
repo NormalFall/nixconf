@@ -1,7 +1,6 @@
 {
   lib,
   config,
-  pkgs,
   ...
 }:
 let
@@ -10,32 +9,23 @@ in
 with lib;
 {
   options.drivers = {
-    disks = {
-      enable = mkOption {
-        default = true;
-        description = "Enables common desktop services for disks";
-      };
-
-      extraPartitionFormats = mkOption { default = true; };
-    };
-
-    logitech.enable = mkEnableOption "Enables drivers for logitechG and logitech mouses";
-
-    laptop = {
-      # Add asus UM3402YA drivers
-      enable = mkEnableOption "Laptops common drivers and tools";
-    };
+    enable = mkEnableOption "Enables all common drivers" // {default = true;};
+    wireless.enable = mkEnableOption "Enables common wireless drivers" // {default = true;};
+    laptop.enable = mkEnableOption "Enables common laptop services";
   };
 
-  config = {
-    services.gvfs.enable = cfg.disks.enable;
-    services.devmon.enable = cfg.disks.enable;
-    services.udisks2.enable = cfg.disks.enable;
-    boot.supportedFilesystems = mkIf cfg.disks.extraPartitionFormats [ "ntfs" ];
+  imports = [
+    ./disk.nix
+    ./peripherals.nix
+    ./bluetooth.nix
+    ./laptop/power-management.nix
+  ];
 
-    services.upower.enable = cfg.laptop.enable;
-    services.power-profiles-daemon.enable = cfg.laptop.enable;
+  config = mkIf cfg.enable {
+    drivers.disk.enable = mkDefault true;
 
-    services.ratbagd.enable = cfg.logitech.enable;
+    drivers.bluetooth.enable = mkDefault config.drivers.wireless.enable;
+
+    drivers.power-management.enable = mkDefault config.drivers.laptop.enable;
   };
 }
