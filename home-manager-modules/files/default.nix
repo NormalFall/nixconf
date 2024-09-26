@@ -5,6 +5,7 @@ with lib;
     ./file-manager.nix
     ./compression.nix
     ./media.nix
+    ./file-sharing.nix
     ./syncthing.nix
   ];
 
@@ -12,6 +13,7 @@ with lib;
     fileManager.enable = mkDefault true;
     compression.enable = mkDefault true;
     media.enable = mkDefault true;
+    fileSharing.enable = mkDefault true;
     syncthing.enable = mkDefault true;
   };
 }
