@@ -98,7 +98,7 @@ with lib;
       systemd = {
         variables = [ "--all" ];
         extraCommands = [
-          "systemctl --user stop graphical-session.target && systemctl --user start hyprland-session.target"
+          "systemctl --user stop graphical-session.target && sleep 2 && systemctl --user start hyprland-session.target"
         ];
       };
 
