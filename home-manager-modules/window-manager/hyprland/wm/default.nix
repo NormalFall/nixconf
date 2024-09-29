@@ -105,6 +105,9 @@ with lib;
       settings = {
         monitor = cfg.monitors;
 
+        misc.disable_hyprland_logo = true;
+        misc.disable_splash_rendering = true;
+
         bind = cfg.extraKeybinds;
 
         exec-once = cfg.exec ++ [
