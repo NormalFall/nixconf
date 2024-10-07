@@ -64,7 +64,7 @@ with lib;
         ];
 
         general = {
-          lock_cmd = "${pkgs.hyprlock}/bin/hyprlock";
+          lock_cmd = "pidof ${pkgs.hyprlock}/bin/hyprlock || ${pkgs.hyprlock}/bin/hyprlock";
           before_sleep_cmd = if cfg.lockBeforeSleep then "loginctl lock-session" else "";
         };
       };
