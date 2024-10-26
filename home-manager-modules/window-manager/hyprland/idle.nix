@@ -35,18 +35,18 @@ with lib;
     };
   };
 
-  config = mkIf cfg.enable {
+  config = {
     services.hypridle = {
-      enable = cfg.enable;
+      enable = true;
       settings = {
-        listener = [
+        listener = mkIf cfg.enable [
           (mkIf (cfg.dimTime != null) {
             timeout = cfg.dimTime;
             on-timeout = "${pkgs.brightnessctl}/bin/brightnessctl s 5% -s & ${pkgs.brightnessctl}/bin/brightnessctl -d *::kbd_backlight s 0 -s";
             on-resume = "${pkgs.brightnessctl}/bin/brightnessctl -r & ${pkgs.brightnessctl}/bin/brightnessctl -d *::kbd_backlight -r";
           })
 
-          (mkIf (cfg.lockTime != null) {
+          (mkIf (cfg.lockTime != null && config.hyprland.lock.enable) {
             timeout = cfg.sleepTime;
             on-timeout = "loginctl lock-session";
           })
@@ -63,7 +63,7 @@ with lib;
           })
         ];
 
-        general = {
+        general = mkIf config.hyprland.lock.enable {
           lock_cmd = "pidof ${pkgs.hyprlock}/bin/hyprlock || ${pkgs.hyprlock}/bin/hyprlock";
           before_sleep_cmd = if cfg.lockBeforeSleep then "loginctl lock-session" else "";
         };
