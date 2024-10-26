@@ -26,6 +26,7 @@ in
 
   hyprland = {
     enable = true;
+    idle.enable = false;
     wm.monitors = [ "DP-1, 3440x1440@120,0x0,1" ];
     wm.cursor.size = 30;
   };
