@@ -42,6 +42,7 @@ with lib;
         "libvirtd"
         "dialout"
         "plugdev"
+        "wireshark"
       ];
       shell = pkgs.${cfg.shell};
     };
