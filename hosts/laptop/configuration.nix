@@ -18,6 +18,7 @@ in
     (modules + /pipewire)
     (modules + /privacy)
     (modules + /vms)
+    (modules + /dev)
   ];
 
   boot.loader = {

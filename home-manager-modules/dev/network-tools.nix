@@ -25,13 +25,6 @@ let
       charles3
     ];
   };
-
-  sniffPkgs = {
-    free = with pkgs; [ wireshark ];
-
-    unfree = [ ];
-  };
-
 in
 with lib;
 {
@@ -50,12 +43,6 @@ with lib;
       description = "Tools to reverse engineer APIs";
     };
 
-    sniff = mkOption {
-      default = true;
-      type = types.bool;
-      description = "Advanced tool to check network traffic";
-    };
-
     allowUnfree = mkOption {
       default = true;
       type = types.bool;
@@ -72,9 +59,6 @@ with lib;
     home.packages = lists.subtractLists cfg.exclude (
       (if cfg.basic then (if cfg.allowUnfree then basicPkgs.unfree else [ ]) ++ basicPkgs.free else [ ])
       ++ (if cfg.api then (if cfg.allowUnfree then apiPkgs.unfree else [ ]) ++ apiPkgs.free else [ ])
-      ++ (
-        if cfg.sniff then (if cfg.allowUnfree then sniffPkgs.unfree else [ ]) ++ sniffPkgs.free else [ ]
-      )
     );
   };
 }

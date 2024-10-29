@@ -1,13 +1,10 @@
 { config, lib, ... }:
 let
-  cfg = config.embededDev;
+  cfg = config.dev.embeded;
 in
 with lib;
 {
-  options.embededDev.enable = mkOption {
-    default = true;
-    description = "Makes udev rules for various embeded plaforms";
-  };
+  options.dev.embeded.enable = mkEnableOption "Makes udev rules for various embeded plaforms";
 
   config = mkIf cfg.enable {
     users.groups.plugdev = { };
