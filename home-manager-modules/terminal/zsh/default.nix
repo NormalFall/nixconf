@@ -1,7 +1,7 @@
 {
   lib,
   config,
-  pkgs,
+  customPkgs,
   ...
 }:
 let
@@ -29,10 +29,17 @@ with lib;
       enableCompletion = true;
 
       shellAliases = {
+        # NixOS management
         test = "nh os test -H ${cfg.host}";
         update = "nh os switch -H ${cfg.host}";
         upgrade = "update --update";
+        clean = "nh clean all --keep-since=3d";
+        clean-all = "nh clean all";
         edit = "nvim $FLAKE";
+
+        # Nix shell
+        code-shell = "${customPkgs.code-shell}/bin/code-shell";
+        cs = "code-shell";
       };
 
       oh-my-zsh = {
