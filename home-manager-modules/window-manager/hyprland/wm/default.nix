@@ -2,6 +2,7 @@
   lib,
   config,
   pkgs,
+  customPkgs,
   ...
 }:
 let
@@ -113,6 +114,7 @@ with lib;
         exec-once = cfg.exec ++ [
           cfg.polkit 
           "${pkgs.wl-clip-persist}/bin/wl-clip-persist --clipboard both" # Make clipboard outlive windows
+          "${customPkgs.clipsync}/bin/clipsync watch without-notifications"
         ];
 
         input.touchdevice.enabled = cfg.touchScreen;
