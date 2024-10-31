@@ -34,12 +34,13 @@
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
+      customPkgs = (import ./pkgs pkgs);
     in {
 
       nixosConfigurations = {
 
         laptop = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
+          specialArgs = { inherit inputs customPkgs; };
           modules = [
             ./hosts/laptop/configuration.nix
             inputs.home-manager.nixosModules.default

@@ -3,6 +3,7 @@
   config,
   pkgs,
   inputs,
+  customPkgs,
   ...
 }:
 
@@ -30,6 +31,7 @@ with lib;
     };
   };
 
+
   config = mkIf cfg.enable {
     programs.${cfg.shell}.enable = true;
 
@@ -47,11 +49,13 @@ with lib;
       shell = pkgs.${cfg.shell};
     };
 
+
     home-manager = mkIf cfg.homeManager.enable {
       backupFileExtension = "backup";
       extraSpecialArgs = {
         inherit (cfg) userName;
         inherit inputs;
+        inherit customPkgs;
       };
 
       users.${cfg.userName} = cfg.homeManager.config;
