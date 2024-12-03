@@ -85,6 +85,7 @@ with lib;
         luasnip.enable = true;
 
         presence-nvim.enable = true;
+        web-devicons.enable = true;
 
         cmp = {
           enable = true;
@@ -119,7 +120,6 @@ with lib;
 
         alpha = {
           enable = true;
-          iconsEnabled = true;
           theme = "dashboard";
         };
 
@@ -129,15 +129,14 @@ with lib;
         };
 
         treesitter.enable = true;
-        surround.enable = true;
+        vim-surround.enable = true;
 
         lsp.enable = true;
 
         nix.enable = true;
         lsp.servers.nixd.enable = true;
 
-        rust-tools.enable = true;
-        lsp.servers.rust-analyzer = {
+        lsp.servers.rust_analyzer = {
           enable = true;
           installCargo = true;
           installRustc = true;
