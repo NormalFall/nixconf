@@ -20,15 +20,6 @@ with lib;
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;
-
-      # Camera fix
-      wireplumber.extraConfig = {
-        "10-disable-camera" = {
-          "wireplumber.profiles" = {
-            main."monitor.libcamera" = "disabled";
-          };
-        };
-      };
     };
   };
 }
