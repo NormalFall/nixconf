@@ -2,9 +2,8 @@
 {
   fonts.packages = with pkgs; [
     noto-fonts
-    noto-fonts-cjk
+    noto-fonts-cjk-sans
     noto-fonts-emoji
-    nerdfonts
     liberation_ttf
     fira-code
     fira-code-symbols
@@ -12,5 +11,6 @@
     dina-font
     proggyfonts
     font-awesome
-  ];
+  ]
+  ++ (builtins.filter (x: (builtins.isAttrs x && builtins.hasAttr "outputs" x)) (builtins.attrValues pkgs.nerd-fonts));
 }
