@@ -27,6 +27,7 @@ with lib;
         kicad
         fritzing
         prusa-slicer
+        blender
       ]
     );
   };
