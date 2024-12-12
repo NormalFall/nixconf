@@ -61,7 +61,7 @@ if [ -z "$SHELL_TYPE" ]; then
 fi
 
 if [ "$SHELL_TYPE" = "flake.nix" ]; then
-    nix develop $SHELL_PATH --command zsh -c "SHELL=zsh $CODE ."
+    nix develop $SHELL_PATH --command zsh -c "SHELL=zsh $CODE -n ."
 elif [ "$SHELL_TYPE" = "shell.nix" ]; then
-    nix-shell $SHELL_PATH --command "zsh -c \"SHELL=zsh $CODE .\""
+    nix-shell $SHELL_PATH --command "zsh -c \"SHELL=zsh $CODE -n .\""
 fi
