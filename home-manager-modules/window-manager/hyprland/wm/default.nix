@@ -113,7 +113,7 @@ with lib;
 
         exec-once = cfg.exec ++ [
           cfg.polkit 
-          "${pkgs.wl-clip-persist}/bin/wl-clip-persist --clipboard both" # Make clipboard outlive windows
+          "${pkgs.wl-clip-persist}/bin/wl-clip-persist --clipboard regular" # Make clipboard outlive windows
           "${customPkgs.clipsync}/bin/clipsync watch without-notifications"
         ];
 
