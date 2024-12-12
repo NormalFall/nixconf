@@ -48,6 +48,15 @@ tooltip {
     margin-left: 0.3em;
 }
 
+#tray menu {
+  background-color: @background;
+}
+
+#tray menu *:hover {
+  background-color: @background-alt;
+}
+
+
 #battery,
 #power-profiles-daemon,
 #memory,
