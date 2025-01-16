@@ -33,9 +33,16 @@ in
     (themes + /default)
   ];
 
-  # Use systemd for usb boot
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.systemd-boot.enable = true;
+  boot.loader = {
+    efi = {
+      canTouchEfiVariables = true;
+      efiSysMountPoint = "/boot/efi";
+    };
+    grub = {
+      efiSupport = true;
+      device = "nodev";
+    };
+  };
 
   networking = {
     hostName = "snowFlakeThe6th";
