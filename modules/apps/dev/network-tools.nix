@@ -19,11 +19,7 @@ let
   };
 
   apiPkgs = {
-    pkgs = with pkgs; [
-      insomnia
-      postman
-      charles
-    ];
+    pkgs = with pkgs; [ insomnia ];
     
     conf = {
       # wireshark
