@@ -33,7 +33,10 @@
   outputs = { self, nixpkgs, ... }@inputs:
     let
       system = "x86_64-linux";
-      pkgs = import nixpkgs { inherit system; };
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+      };
       customPkgs = (import ./pkgs pkgs);
     in {
 
@@ -48,7 +51,7 @@
         };
 
         desktop = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs customPkgs; };
+          specialArgs = { inherit inputs pkgs customPkgs; };
           modules = [
             ./hosts/desktop/configuration.nix
             inputs.home-manager.nixosModules.default

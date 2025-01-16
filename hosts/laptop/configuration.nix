@@ -1,24 +1,36 @@
 { config, pkgs, ... }:
 let
   mainUser = "normal";
-  modules = ../../modules;
-  bundles = modules + "/bundles";
+
+  core = ../../modules/core;
+  bundles = ../../modules/bundles;
+  apps = ../../modules/apps;
+  services = ../../modules/services;
+  themes = ../../modules/themes;
 in
 {
   imports = [
     ./hardware-configuration.nix
+    (core + /main-user)
+    (core + /greetd)
+    (core + /hyprland)
+    (core + /drivers)
+    (core + /pipewire)
+    (services + /vms)
     (bundles + /base-packages.nix)
     (bundles + /fonts.nix)
     (bundles + /nice-settings.nix)
-    (modules + /compat-tools)
-    (modules + /drivers)
-    (modules + /gaming)
-    (modules + /greetd)
-    (modules + /main-user)
-    (modules + /pipewire)
-    (modules + /privacy)
-    (modules + /vms)
-    (modules + /dev)
+    (apps + /misc)
+    (apps + /school)
+    (apps + /gaming)
+    (apps + /files)
+    (apps + /dev)
+    (apps + /compat-tools)
+    (apps + /privacy)
+    (apps + /terminal)
+    (apps + /utilities)
+    (apps + /cad)
+    (themes + /default)
   ];
 
   boot.loader = {
@@ -37,23 +49,29 @@ in
     networkmanager.enable = true;
   };
 
-  drivers.laptop.enable = true;
-  drivers.peripherals.logitech.enable = true;
-
   greetd = {
     command = "Hyprland";
     greeter = "tuigreet";
   };
 
-  mainUser = {
-    homeManager = {
-      enable = true;
-      config = ./home.nix;
-    };
-    userName = mainUser;
+  hyprland = {
+    wm.monitors = [ "eDP-1, 1920x1200@90,0x0,1" ];
+    wm.gdkScale = 1.5;
+    idle.enable = true;
+    idle.dimTime = 100;
   };
 
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  drivers.laptop.enable = true;
+
+  mainUser.userName = mainUser;
+
+  terminal.zsh.host = "laptop";
+  files.media.editors = true;
+
+  utilities.peripherals = {
+    logitech.enable = true;
+    logitechg.enable = true;
+  };
 
   system.stateVersion = "23.11";
 }
