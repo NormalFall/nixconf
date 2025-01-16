@@ -13,8 +13,11 @@
   };
 
   animations = {
-    bezier = [ "overshot,0.05,0.9,0.1,1.1" ];
-    animation = [ "workspaces,1,8,overshot,slidevert" ];
+    bezier = [ "myBezier,0.22, 1, 0.36, 1" ];
+    animation = [
+      "windows, 1, 5, myBezier, popin"
+      "workspaces,1,8,myBezier,slidevert"
+    ];
   };
 
   layerrule = [ "blur,gtk-layer-shell" ];
