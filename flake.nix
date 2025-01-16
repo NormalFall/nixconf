@@ -51,7 +51,7 @@
         };
 
         desktop = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs pkgs customPkgs; };
+          specialArgs = { inherit inputs customPkgs; };
           modules = [
             ./hosts/desktop/configuration.nix
             inputs.home-manager.nixosModules.default
