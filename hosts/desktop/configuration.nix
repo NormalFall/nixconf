@@ -60,9 +60,12 @@ in
   files.media.editors = true;
   gaming.extras.slippi.isoPath = "/mnt/nvme/ROMs/GC/ANIMELEE.iso";
 
-  utilities.peripherals = {
-    logitech.enable = true;
-    logitechg.enable = true;
+  utilities = {
+    rgb.enable = true;
+    peripherals = {
+      logitech.enable = true;
+      logitechg.enable = true;
+    };
   };
 
   system.stateVersion = "23.11";

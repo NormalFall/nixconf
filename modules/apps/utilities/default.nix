@@ -12,11 +12,13 @@ with lib;
     ./audio.nix
     ./disk.nix
     ./peripherals.nix
+    ./rgb.nix
   ];
 
   config = mkIf cfg.enable {
     utilities.audio.enable = mkDefault true;
     utilities.disk.enable = mkDefault true;
     utilities.peripherals.enable = mkDefault true;
+    utilities.rgb.enable = mkDefault false;
   };
 }
