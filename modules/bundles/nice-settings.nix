@@ -7,7 +7,6 @@
 with lib;
 {
   config = {
-    nixpkgs.config.allowUnfree = true;
     nix.settings.experimental-features = [
       "nix-command"
       "flakes"
@@ -17,5 +16,7 @@ with lib;
 
     programs.mtr.enable = true;
     programs.dconf.enable = true;
+
+    nixpkgs.config.allowUnfree = true;
   };
 }
