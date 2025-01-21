@@ -17,7 +17,7 @@ let
     gb = sameboy;
     wii = dolphin-emu;
     wiiu = cemu;
-    switch = ryujinx;
+    switch = ryujinx-greemdev;
 
     # Sega
     sega = kega-fusion;
