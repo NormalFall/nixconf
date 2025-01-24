@@ -441,11 +441,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1736104919,
-        "narHash": "sha256-lMwkCfu7bd5BgLwQi5sKk7Tz4AtuxLhC5v5T32AHvF8=",
+        "lastModified": 1737749064,
+        "narHash": "sha256-7bA2lLVkicK+d+hMJbjhBApxfb1iNwS3fK4VSFlINvI=",
         "owner": "NormalFall",
         "repo": "ssbm-nix",
-        "rev": "4cea5c4ccf999bc7dd3ed77f4677ab801ebce18f",
+        "rev": "66eef3368b69deab7a3f74a2d299c8135b78d1d1",
         "type": "github"
       },
       "original": {
