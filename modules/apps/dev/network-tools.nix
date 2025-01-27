@@ -19,7 +19,10 @@ let
   };
 
   apiPkgs = {
-    pkgs = with pkgs; [ insomnia ];
+    pkgs = with pkgs; [
+      insomnia
+      httptoolkit
+    ];
     
     conf = {
       # wireshark
