@@ -76,20 +76,6 @@ with lib;
 
       ({...} : {
         home.packages = [ pkgs.xdg-utils ];
-        xdg.portal = {
-          enable = true;
-          extraPortals = [
-            pkgs.xdg-desktop-portal-hyprland
-            pkgs.xdg-desktop-portal-gtk
-          ];
-
-          config = {
-            common.default = [
-              "gtk"
-              "hyprland"
-            ];
-          };
-        };
 
         home.pointerCursor = {
           gtk.enable = true;
