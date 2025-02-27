@@ -42,6 +42,11 @@ with lib;
       description = "Path of polkit agent";
     };
 
+    ssh-agent = mkOption {
+      default = "eval $(${pkgs.openssh}/bin/ssh-agent)";
+      description = "Command for the ssh agent";
+    };
+
     touchScreen = mkEnableOption "Enables or disables touchscreens";
 
     extraKeybinds = mkOption {
