@@ -108,6 +108,7 @@ with lib;
 
             exec-once = cfg.exec ++ [
               cfg.polkit 
+              cfg.ssh-agent
               "${pkgs.wl-clip-persist}/bin/wl-clip-persist --clipboard regular" # Make clipboard outlive windows
               "${customPkgs.clipsync}/bin/clipsync watch without-notifications"
             ];
