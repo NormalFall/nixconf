@@ -8,7 +8,6 @@
       fd
       git
       gdu
-      firefox
       btop
       killall
       nh
