@@ -38,7 +38,7 @@ with lib;
           ++ (
             if (cfg.video.editor && cfg.editors) then
               [
-                pkgs.kdenlive
+                pkgs.kdePackages.kdenlive
                 pkgs.ffmpeg
               ]
             else
