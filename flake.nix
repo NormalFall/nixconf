@@ -9,6 +9,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nix-gaming = {
       url = "github:fufexan/nix-gaming";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -43,7 +48,7 @@
       nixosConfigurations = {
 
         laptop = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs customPkgs; };
+          specialArgs = { inherit inputs customPkgs system; };
           modules = [
             ./hosts/laptop/configuration.nix
             inputs.home-manager.nixosModules.default
@@ -51,7 +56,7 @@
         };
 
         desktop = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs customPkgs; };
+          specialArgs = { inherit inputs customPkgs system; };
           modules = [
             ./hosts/desktop/configuration.nix
             inputs.home-manager.nixosModules.default

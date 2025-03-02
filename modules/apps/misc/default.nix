@@ -10,11 +10,13 @@ with lib;
     ./discord
     ./obs
     ./spotify
+    ./zen-browser
   ];
 
   config.misc = mkIf cfg.enableAll {
     discord.enable = mkDefault true;
     obs.enable = mkDefault true;
     spotify.enable = mkDefault true;
+    zen-browser.enable = mkDefault true;
   };
 }
