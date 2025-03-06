@@ -49,7 +49,7 @@ with lib;
 
 
     home-manager = {
-      backupFileExtension = "backup";
+      backupFileExtension = "backup-" + pkgs.lib.readFile "${pkgs.runCommand "timestamp" {} "echo -n `date '+%Y%m%d%H%M%S'` > $out"}";
       extraSpecialArgs = {
         inherit inputs;
         inherit customPkgs;
