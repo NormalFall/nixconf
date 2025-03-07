@@ -36,6 +36,8 @@ with lib;
 {
   options.dev.vscodium = {
     enable = mkEnableOption "Enables vscodium";
+
+    code-shell.enable = mkEnableOption "Enables code-shell" // { default = true; };
     # Add theme options later
   };
 

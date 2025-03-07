@@ -41,7 +41,6 @@ with lib;
           edit = "nvim /home/${config.mainUser.userName}/.nixconf/";
 
           # Nix shell
-          code-shell = "${customPkgs.code-shell}/bin/code-shell";
           cs = "code-shell";
         };
 
