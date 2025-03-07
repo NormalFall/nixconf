@@ -37,7 +37,6 @@ with lib;
           update = "nh os switch -H ${cfg.host}";
           upgrade = "update --update";
           clean = "nh clean all";
-          clean-all = "nh clean all";
           edit = "nvim /home/${config.mainUser.userName}/.nixconf/";
 
           # Nix shell
