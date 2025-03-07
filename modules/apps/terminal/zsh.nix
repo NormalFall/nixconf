@@ -42,6 +42,15 @@ with lib;
 
           # Nix shell
           cs = "code-shell";
+
+          # Git
+          g = "git";
+          s = "git status";
+          a = "git add";
+          d = "git diff";
+          ds = "git diff --staged";
+          l = "git log";
+          commit = "git commit -m";
         };
 
         oh-my-zsh = {
