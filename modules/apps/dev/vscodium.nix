@@ -57,14 +57,16 @@ with lib;
           package = pkgs.vscodium;
           enable = true;
 
-          enableUpdateCheck = false;
-          enableExtensionUpdateCheck = false;
+          profiles.default = {
+            enableUpdateCheck = false;
+            enableExtensionUpdateCheck = false;
 
-          userSettings = {
-            "window.titleBarStyle" = "custom";
+            userSettings = {
+              "window.titleBarStyle" = "custom";
+            };
+
+            inherit extensions;
           };
-
-          inherit extensions;
         };
       })
     ];
