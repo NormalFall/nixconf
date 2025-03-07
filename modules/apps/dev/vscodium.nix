@@ -2,6 +2,7 @@
   lib,
   config,
   pkgs,
+  customPkgs,
   ...
 }:
 let
@@ -46,7 +47,9 @@ with lib;
   ];
 
   config = mkIf cfg.enable {
-    environment.systemPackages = [ pkgs.vscodium ]; # Make sure its installed systemwide
+    # Make sure its installed systemwide
+    environment.systemPackages = [ pkgs.vscodium ] 
+      ++ (if cfg.code-shell.enable then [ customPkgs.code-shell ] else []);
     
     mainUser.modules = [
       ({...} : {
