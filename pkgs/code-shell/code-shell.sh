@@ -14,8 +14,7 @@ nixshell_exists () {
 }
 
 check_vscode () {
-    command -v codium
-    command -v code
+    command -v codium || command -v code
 }
 
 open_dir () {
