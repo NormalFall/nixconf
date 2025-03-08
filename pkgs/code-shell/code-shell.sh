@@ -45,7 +45,7 @@ fi
 if [ -z "$DIR" ]; then # If no args are given look in current dir.
     SHELL_TYPE=$(nixshell_exists "$CURRENT_DIR")
     SHELL_PATH="$CURRENT_DIR"
-
+    DIR="$CURRENT_DIR"
 elif [ -d "$DIR" ]; then
     SHELL_TYPE=$(nixshell_exists "$DIR")
     SHELL_PATH="$DIR"
@@ -75,7 +75,7 @@ fi
 # Check if shell type got found
 if [ -z "$SHELL_TYPE" ]; then
     printf "${YELLOW}Warning${NC}: Found no valid nix shell. Opening VSCode anyway\n\n"
-    open_dir
+    eval "$(open_dir)"
     exit 0
 fi
 
@@ -87,7 +87,7 @@ if [ "$SHELL_TYPE" = "flake.nix" ]; then
     # Run shell anyway if flake has no shell
     if [ $? -ne 0 ]; then
         printf "${YELLOW}Warning${NC}: Flake failed to get nix shell. Opening VSCode anyway\n\n"
-        open_dir
+        eval "$(open_dir)"
     fi
 elif [ "$SHELL_TYPE" = "shell.nix" ]; then
     nix-shell "$SHELL_PATH" --command "$(open_dir)"
