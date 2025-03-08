@@ -25,9 +25,9 @@ usage () {
     printf "Usage:\n  code-shell [PATH]\n"
 }
 
-DIR=$1
-CURRENT_DIR=$(pwd)
-CODE=$(check_vscode)
+DIR="$1"
+CURRENT_DIR="$(pwd)"
+CODE="$(check_vscode)"
 
 #Print usage
 if [ "$1" = "-h" ]; then
@@ -37,16 +37,16 @@ fi
 
 # Check if vscode is installed
 if [ -z "$CODE" ]; then
-    printf "VsCode not found"
+    printf "${RED}Error${NC}: No vscode installation found!\n\n"
 fi
 
 # Find shell type
 if [ -z "$DIR" ]; then # If no args are given look in current dir.
-    SHELL_TYPE=$(nixshell_exists "$CURRENT_DIR")
+    SHELL_TYPE="$(nixshell_exists "$CURRENT_DIR")"
     SHELL_PATH="$CURRENT_DIR"
     DIR="$CURRENT_DIR"
 elif [ -d "$DIR" ]; then
-    SHELL_TYPE=$(nixshell_exists "$DIR")
+    SHELL_TYPE="$(nixshell_exists "$DIR")"
     SHELL_PATH="$DIR"
 
 elif [ -f "$DIR" ]; then
