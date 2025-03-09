@@ -30,7 +30,7 @@ with lib;
         wireguard-tools
         v2raya
       ]
-      ++ (if cfg.mullvad then [ mullvad-closest ] else [ ])
+      ++ (if cfg.mullvad then [ mullvad-closest mullvad-vpn ] else [ ])
       ++ (
         if cfg.browsers then [ tor-browser ] ++ (if cfg.mullvad then [ mullvad-browser ] else [ ]) else [ ]
       );
