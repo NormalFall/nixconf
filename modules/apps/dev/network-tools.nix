@@ -12,6 +12,7 @@ let
     pkgs = with pkgs; [
       nmap
       dig
+      traceroute
       # More stuff later
     ];
 
