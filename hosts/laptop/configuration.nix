@@ -29,7 +29,6 @@ in
     (apps + /privacy)
     (apps + /terminal)
     (apps + /utilities)
-    (apps + /cad)
     (themes + /default)
   ];
 
