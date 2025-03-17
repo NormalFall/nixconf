@@ -3,7 +3,7 @@
   config = {
     environment.systemPackages = with pkgs; [
       fastfetch
-      neovim
+      vim
       tree
       fd
       git
