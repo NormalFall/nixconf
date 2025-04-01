@@ -17,6 +17,7 @@ in
     (core + /drivers)
     (core + /pipewire)
     (services + /vms)
+    (services + /ollama)
     (bundles + /base-packages.nix)
     (bundles + /fonts.nix)
     (bundles + /nice-settings.nix)
