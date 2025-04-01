@@ -21,8 +21,8 @@
       "SUPER,P,pseudo,"
 
       #ScreenShots
-      ''ALT,S,exec,GRIMBLAST_EDITOR="${pkgs.swappy}/bin/swappy -f" ${pkgs.grimblast}/bin/grimblast edit screen''
-      ''ALTSHIFT,S,exec,GRIMBLAST_EDITOR="${pkgs.swappy}/bin/swappy -f" ${pkgs.grimblast}/bin/grimblast edit area''
+      ''ALT,S,exec,${pkgs.swappy}/bin/swappy -f "$(${pkgs.hyprshot}/bin/hyprshot -o /tmp/pictures -zsm output -- echo)"''
+      ''ALTSHIFT,S,exec,${pkgs.swappy}/bin/swappy -f "$(${pkgs.hyprshot}/bin/hyprshot -o /tmp/pictures -zsm region -- echo)"''
 
       #Audio
       ",XF86AudioLowerVolume,exec,${pkgs.pamixer}/bin/pamixer -d 5"
