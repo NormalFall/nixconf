@@ -14,6 +14,7 @@ with lib;
   # todo: add a check for if VM module is enabled
   config = mkIf cfg.enable {
     environment.systemPackages = [ pkgs.android-studio ];
+    programs.adb.enable = true;
     networking.firewall.allowedTCPPorts = [ 8081 ]; # react native/expo ports
   };
 }
