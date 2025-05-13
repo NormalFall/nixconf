@@ -63,6 +63,14 @@
           ];
         };
 
+        usb = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs customPkgs system; };
+          modules = [
+            ./hosts/usb/configuration.nix
+            inputs.home-manager.nixosModules.default
+          ];
+        };
+
       };
     };
 }
