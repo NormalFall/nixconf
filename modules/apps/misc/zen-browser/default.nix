@@ -1,7 +1,7 @@
 {lib, pkgs, config, inputs, system, ...}:
 let
   cfg = config.misc.zen-browser;
-  browser-desktop-file = "zen.desktop";
+  browser-desktop-file = "zen-beta.desktop";
 in with lib; {
   options.misc.zen-browser.enable = mkEnableOption "Enables zen-browser default pakcage";
 
