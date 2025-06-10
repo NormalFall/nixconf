@@ -15,6 +15,7 @@ with lib;
     mainUser.groups = [ "plugdev" ];
     services.udev.extraRules = ''
       ATTRS{idVendor}=="2e8a", ATTRS{idProduct}=="000c", MODE:="0666", GROUP="plugdev"
+      ATTRS{idVendor}=="0483", ATTRS{idProduct}=="374b", MODE:="0666", GROUP="plugdev"
     '';
   };
 }
