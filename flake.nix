@@ -19,6 +19,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    niri = {
+      url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     ssbm-nix = {
       url = "github:NormalFall/ssbm-nix";
       inputs.nixpkgs.follows = "nixpkgs";

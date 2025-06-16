@@ -17,7 +17,7 @@ with lib;
     };
   };
 
-  imports = [ ../../core/main-user ];
+  imports = [ ../../main-user ];
 
   config.mainUser.modules = [
     ({...} : {

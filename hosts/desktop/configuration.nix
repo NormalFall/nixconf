@@ -13,7 +13,8 @@ in
     ./hardware-configuration.nix
     (core + /main-user)
     (core + /greetd)
-    (core + /hyprland)
+    (core + /wms/hyprland)
+    (core + /wms/niri)
     (core + /drivers)
     (core + /pipewire)
     (services + /vms)
