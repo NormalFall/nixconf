@@ -1,8 +1,8 @@
 { lib, ... }:
 {
   imports = [
-    ../../../core/hyprland/wm
-    ../../../core/hyprland/lock.nix
+    ../../../core/wms/hyprland/wm
+    ../../../core/wms/hyprland/lock.nix
   ];
 
   config = {

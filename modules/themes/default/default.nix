@@ -1,7 +1,8 @@
 { pkgs, ... }:
 {
   imports = [
-    ../../core/hyprland
+    ../../core/wms/hyprland
+    ../../core/wms/niri
     ./zsh.nix
     ./kitty.nix
     ./hyprland
@@ -13,6 +14,7 @@
   ];
 
   config = {
+    niri.extraKeybinds."Mod+R".action.spawn = [ "${pkgs.nwg-drawer}/bin/nwg-drawer" ];
     hyprland.wm.extraKeybinds = [ "SUPER,R,exec,${pkgs.nwg-drawer}/bin/nwg-drawer" ];
   };
 }

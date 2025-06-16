@@ -70,7 +70,7 @@ with lib;
     };
   };
 
-  imports = [ ../../main-user ];
+  imports = [ ../../../main-user ];
 
   config = mkIf cfg.enable {
     environment.sessionVariables.NIXOS_OZONE_WL = "1";
