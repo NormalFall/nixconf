@@ -5,7 +5,7 @@
     "Mod+Q".action.spawn = [ "xdg-open" "/home/${userName}"];
     
     # Lock
-    "Mod+L".action.spawn = [ "loginctl lock-session" ];
+    "Mod+L".action.spawn = [ "loginctl" "lock-session" ];
 
     # Windows
     "Mod+Shift+F".action = maximize-column;
@@ -21,18 +21,18 @@
     "Alt+Shift+S".action = screenshot;
 
     # Audio
-    "XF86AudioLowerVolume".action.spawn = [ "${pkgs.pamixer}/bin/pamixer -d 5" ];
-    "XF86AudioRaiseVolume".action.spawn = [ "${pkgs.pamixer}/bin/pamixer -i 5" ];
+    "XF86AudioLowerVolume".action.spawn = [ "${pkgs.pamixer}/bin/pamixer" "-d" "5" ];
+    "XF86AudioRaiseVolume".action.spawn = [ "${pkgs.pamixer}/bin/pamixer" "-i" "5" ];
 
-    "XF86AudioPlay".action.spawn = [ "${pkgs.playerctl}/bin/playerctl play-pause" ];
-    "XF86AudioPrev".action.spawn = [ "${pkgs.playerctl}/bin/playerctl previous" ];
-    "XF86AudioNext".action.spawn = [ "${pkgs.playerctl}/bin/playerctl next" ];
-    "Alt+F9".action.spawn = [ "${pkgs.playerctl}/bin/playerctl previous" ];
-    "Alt+F10".action.spawn = [ "${pkgs.playerctl}/bin/playerctl next" ];
+    "XF86AudioPlay".action.spawn = [ "${pkgs.playerctl}/bin/playerctl" "play-pause" ];
+    "XF86AudioPrev".action.spawn = [ "${pkgs.playerctl}/bin/playerctl" "previous" ];
+    "XF86AudioNext".action.spawn = [ "${pkgs.playerctl}/bin/playerctl" "next" ];
+    "Alt+F9".action.spawn = [ "${pkgs.playerctl}/bin/playerctl" "previous" ];
+    "Alt+F10".action.spawn = [ "${pkgs.playerctl}/bin/playerctl" "next" ];
 
     # Brightness
-    "XF86MonBrightnessDown".action.spawn = [ "${pkgs.brightnessctl}/bin/brightnessctl s 10%-" ];
-    "XF86MonBrightnessUp".action.spawn = [ "${pkgs.brightnessctl}/bin/brightnessctl s +10%" ];
+    "XF86MonBrightnessDown".action.spawn = [ "${pkgs.brightnessctl}/bin/brightnessctl" "s" "10%-" ];
+    "XF86MonBrightnessUp".action.spawn = [ "${pkgs.brightnessctl}/bin/brightnessctl" "s" "+10%" ];
 
     # Aim focus
     "Mod+WheelScrollDown".action = focus-column-left;
@@ -78,6 +78,12 @@
     "Alt+7".action.move-window-to-workspace = 7;
     "Alt+8".action.move-window-to-workspace = 8;
     "Alt+9".action.move-window-to-workspace = 9;
+
+    # Resize window
+    "Mod+Shift+Left".action.set-window-width = "-10%";
+    "Mod+Shift+Right".action.set-window-width = "+10%";
+    "Mod+Shift+Up".action.set-window-height = "+10%";
+    "Mod+Shift+Down".action.set-window-height = "-10%";
 
     # Overview
     "Mod+W".action = toggle-overview;
