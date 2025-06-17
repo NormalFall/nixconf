@@ -7,6 +7,7 @@
 
     modules-left = [
       "hyprland/workspaces"
+      "niri/workspaces"
       "group/usage"
     ];
     modules-center = [ "clock" ];
@@ -42,6 +43,11 @@
         "bluetooth"
       ];
     };
+
+    "niri/workspaces" = {
+      format = "{value}";
+    };
+
 
     "hyprland/workspaces" = {
       on-click = "activate";

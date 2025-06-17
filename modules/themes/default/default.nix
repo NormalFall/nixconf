@@ -6,6 +6,7 @@
     ./zsh.nix
     ./kitty.nix
     ./hyprland
+    ./niri.nix
     ./nwg-drawer
     ./waybar
     ./dunst.nix

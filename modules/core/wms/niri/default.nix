@@ -6,14 +6,30 @@ in with lib; {
   options.niri = {
     enable = mkEnableOption "Enables niri and it's environment" // { default = true;};
 
-    layout = mkOption {
-      default = null;
-      description = "Layout options of niri";
+    theme = mkOption {
+      default = {
+        layout = {};
+        overview = {};
+        layer-rules = [];
+        window-rules = [];
+        no-csd = true;
+      };
     };
 
     extraKeybinds = mkOption {
       default = {};
       description = "Additional binds for external modules";
+    };
+
+    polkit = mkOption {
+      default = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+      description = "Path of polkit agent";
+    };
+
+    touchScreen = mkEnableOption "Enables laptop touch screen";
+
+    monitors = mkOption {
+      default = {};
     };
   };
 
@@ -35,37 +51,72 @@ in with lib; {
         };
 
         programs.niri.enable = true;
-        programs.niri.package = pkgs.niri;
+        programs.niri.package = pkgs.niri; # Prefer nixpkgs niri
         programs.niri.settings = {
           input = {
+            power-key-handling.enable = false;
+
             focus-follows-mouse.enable = true;
-            focus-follows-mouse.max-scroll-amount = "5%";
-            warp-mouse-to-focus = true;
+            focus-follows-mouse.max-scroll-amount = "30%";
+            warp-mouse-to-focus.enable = true;
 
             touchpad = {
               tap = true;
-              natural-scroll = true;
+              natural-scroll = false;
             };
+
+            touch.enable = cfg.touchScreen;
+            touch.map-to-output = "eDP-1"; # Map touch to laptop screen
           };
 
-          # Temporairy while there are no options for display
-          outputs."DP-1".mode = {
-            width = 3440;
-            height = 1440;
-            refresh = 144.000;
-          };
+          gestures.hot-corners.enable = false;
 
-          # Disable server decorations
-          prefer-no-csd = true;
+          hotkey-overlay.skip-at-startup = true;
 
-          # Support xwayland
-          spawn-at-startup = [{command = [
-            "${pkgs.xwayland-satellite}/bin/xwayland-satellite"
-          ];}];
+          clipboard.disable-primary = true;
+
+          spawn-at-startup = [
+            {command = [
+              "${pkgs.xwayland-satellite}/bin/xwayland-satellite"
+            ];}
+
+            {command = [
+              cfg.polkit
+            ];}
+          ];
+
+          # xwayland env
           environment.DISPLAY = ":0";
 
-          layout = mkIf (cfg.layout != null) cfg.layout;
+          # Hack to have preopened workspaces
+          # Don't add too many since it messes with bars
+          workspaces."1" = {};
+          workspaces."2" = {};
+          workspaces."3" = {};
+          workspaces."4" = {};
+
+          # Configurables
+          layout = cfg.theme.layout // {
+              preset-column-widths = [
+                { proportion = 1. / 3.; }
+                { proportion = 1. / 2.; }
+                { proportion = 2. / 3.; }
+              ];
+
+              default-column-width.proportion = 1. / 3.;
+          };
+
+          overview = cfg.theme.overview;
+
+          layer-rules = cfg.theme.layer-rules;
+
+          window-rules = cfg.theme.window-rules;
+
+          prefer-no-csd = cfg.theme.no-csd;
+
           binds = cfg.extraKeybinds;
+
+          outputs = cfg.monitors;
         };
       })
     ];
