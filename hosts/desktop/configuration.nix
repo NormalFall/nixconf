@@ -63,6 +63,12 @@ in
     wm.cursor.size = 30;
   };
 
+  niri.monitors."DP-1".mode = {
+    width = 3440;
+    height = 1440;
+    refresh = 144.000;
+  };
+
   mainUser.userName = mainUser;
 
   terminal.zsh.host = "desktop";
