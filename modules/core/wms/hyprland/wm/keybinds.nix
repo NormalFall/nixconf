@@ -11,6 +11,7 @@
 
       #Lock
       "SUPER,L,exec,loginctl lock-session"
+      "SUPERSHIFT,L,exec,systemctl sleep"
 
       #Windows
       "SUPERSHIFT,F,fullscreen,1"
