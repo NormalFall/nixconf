@@ -6,6 +6,7 @@
     
     # Lock
     "Mod+L".action.spawn = [ "loginctl" "lock-session" ];
+    "Mod+Shift+L".action.spawn = [ "systemctl" "sleep" ];
 
     # Windows
     "Mod+Shift+F".action = maximize-column;
