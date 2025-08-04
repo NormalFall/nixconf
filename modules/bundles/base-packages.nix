@@ -12,6 +12,8 @@
       killall
       nh
       nixfmt-rfc-style
+      usbutils
+      pciutils
     ];
   };
 }
