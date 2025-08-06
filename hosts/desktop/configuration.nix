@@ -51,6 +51,9 @@ in
     networkmanager.enable = true;
   };
 
+  drivers.amd-gpu.enable = true;
+  drivers.amd-gpu.rocm = true;
+
   greetd = {
     command = "Hyprland";
     greeter = "tuigreet";

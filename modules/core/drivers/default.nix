@@ -18,6 +18,7 @@ with lib;
     ./disk.nix
     ./bluetooth.nix
     ./laptop/power-management.nix
+    ./amd-gpu
   ];
 
   config = mkIf cfg.enable {
