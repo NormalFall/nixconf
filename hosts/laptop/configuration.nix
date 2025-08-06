@@ -48,6 +48,8 @@ in
     networkmanager.enable = true;
   };
 
+  drivers.amd-gpu.enable = true;
+
   greetd = {
     command = "Hyprland";
     greeter = "tuigreet";
