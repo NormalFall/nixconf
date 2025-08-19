@@ -14,7 +14,7 @@ with lib;
   config.environment.systemPackages = with pkgs; [
     unzip
     gnutar
-    rar
+    unrar
     p7zip
   ];
 }
