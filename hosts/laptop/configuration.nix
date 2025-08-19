@@ -12,7 +12,7 @@ in
   imports = [
     ./hardware-configuration.nix
     (core + /main-user)
-    (core + /greetd)
+    (core + /ly)
     (core + /wms/hyprland)
     (core + /drivers)
     (core + /pipewire)
@@ -49,11 +49,6 @@ in
   };
 
   drivers.amd-gpu.enable = true;
-
-  greetd = {
-    command = "Hyprland";
-    greeter = "tuigreet";
-  };
 
   hyprland = {
     wm.monitors = [ "eDP-1, 1920x1200@90,0x0,1" ];

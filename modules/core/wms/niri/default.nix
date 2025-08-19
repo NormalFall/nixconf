@@ -36,6 +36,10 @@ in with lib; {
   imports = [ ../../main-user ];
 
   config = mkIf cfg.enable {
+    environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
+    programs.niri.enable = true;
+
     mainUser.modules = [
       inputs.niri.homeModules.niri
       #inputs.niri.homeModules.config

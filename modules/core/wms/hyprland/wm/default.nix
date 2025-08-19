@@ -75,6 +75,8 @@ with lib;
   config = mkIf cfg.enable {
     environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
+    programs.hyprland.enable = true;
+
     mainUser.modules = [
       ./keybinds.nix
       ./hyprexpo.nix
