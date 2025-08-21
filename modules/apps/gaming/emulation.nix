@@ -10,7 +10,7 @@ let
   emulatorPkgs = with pkgs; {
     # Nintendo
     ds = melonDS;
-    snes = snes9x;
+    snes = snes9x-gtk;
     gba = mgba;
     nes = nestopia-ue;
     n64 = mupen64plus;
