@@ -12,7 +12,7 @@ with lib;
 
   config = mkIf cfg.enable {
     users.groups.plugdev = { }; # Create group
-    mainUser.groups = [ "plugdev" ];
+    mainUser.groups = [ "plugdev" "dialout" ];
     services.udev.extraRules = ''
       ATTRS{idVendor}=="2e8a", ATTRS{idProduct}=="000c", MODE:="0666", GROUP="plugdev"
       ATTRS{idVendor}=="0483", ATTRS{idProduct}=="374b", MODE:="0666", GROUP="plugdev"
