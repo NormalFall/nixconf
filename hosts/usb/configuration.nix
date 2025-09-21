@@ -43,7 +43,7 @@ in
 
   greetd = {
     command = "Hyprland";
-    greeter = "tuigreet";
+    greeter = "${pkgs.tuigreet}/bin/tuigreet";
   };
 
   hyprland = {
