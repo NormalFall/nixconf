@@ -19,6 +19,7 @@ in
     (core + /pipewire)
     (services + /vms)
     (services + /ollama)
+    (services + /jellyfin-rpc)
     (bundles + /base-packages.nix)
     (bundles + /fonts.nix)
     (bundles + /nice-settings.nix)
