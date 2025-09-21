@@ -105,6 +105,7 @@ with lib;
 
             misc.disable_hyprland_logo = true;
             misc.disable_splash_rendering = true;
+            ecosystem.no_update_news = true;
 
             bind = cfg.extraKeybinds;
 
@@ -117,7 +118,7 @@ with lib;
 
             input.touchdevice.enabled = cfg.touchScreen;
 
-            gestures.workspace_swipe = true;
+            gesture = [ "3, vertical, workspace" ];
 
             env = [
               "HYPRCURSOR_SIZE,${builtins.toString (builtins.toString (cfg.cursor.size))}"
