@@ -149,11 +149,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1758479096,
-        "narHash": "sha256-+ZEM6rjCm4UNdpZqGUFESoXXAtXCOykhPif/VZYKfb0=",
+        "lastModified": 1759105843,
+        "narHash": "sha256-1A00RVGGqtpwxpOcuaBFGD4JUJ9dl6vCDIvWQPDjnP8=",
         "owner": "NormalFall",
         "repo": "jellyfin-rpc",
-        "rev": "8a29ccbc963520b45a8b817f74388b4c98ebaeae",
+        "rev": "4230d4128dc25891f426fbbaf7653b52adc4b08e",
         "type": "github"
       },
       "original": {

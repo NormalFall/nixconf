@@ -13,7 +13,7 @@
           imgbbSecretPath = "${config.xdg.configHome}/jellyfin-rpc/imgbb.secret";
           config = {
             jellyfin = {
-              url = "http://192.168.1.171:8096/";
+              url = "http://coreserver.local:8096/";
               username = "normal";
               shows = {
                 display = {
@@ -32,7 +32,13 @@
                 separator = "•";
               };
             };
+            discord = {
+              application_id = "1354614157810598110";
+              image_text = "LocalMedia v{version}";
+            };
             images = {
+              pause_icon_image = "https://i.imgur.com/JvnNE6O.png";
+              default_image = "https://i.imgur.com/4pfJAz1.png";
               imgbb_images = true;
               enable_images = true;
             };
