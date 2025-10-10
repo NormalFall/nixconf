@@ -127,7 +127,9 @@ with lib;
 
             xwayland.force_zero_scaling = !cfg.fakeres;
 
-            general = cfg.theme.general;
+            general = cfg.theme.general // {
+              allow_tearing = true;
+            };
 
             decoration = cfg.theme.decoration;
             animations = cfg.theme.animations;
