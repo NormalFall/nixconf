@@ -26,12 +26,17 @@
           icon_corner_radius = 4;
           min_icon_size = 200;
           width = 500;
+
+          idle_threshold = 120;
+          ignore_dbusclose = true;
         };
+
+        urgency_low.timeout = 10;
 
         urgency_normal = {
           background = "#232629";
           foreground = "#eff0f1";
-          timeout = 5;
+          timeout = 30;
         };
 
         urgency_critical = {
