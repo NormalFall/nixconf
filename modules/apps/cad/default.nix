@@ -12,7 +12,7 @@ with lib;
   options.cad = {
     enable = mkOption {
       default = true;
-      description = "Enables rototyping, CAD tools and 3d printer software";
+      description = "Enables prototyping, CAD tools and 3d printer software";
     };
     exclude = mkOption {
       default = [ ];
@@ -24,7 +24,6 @@ with lib;
     environment.systemPackages = lists.subtractLists cfg.exclude (
       with pkgs;
       [
-        kicad
         fritzing
         prusa-slicer
         blender
