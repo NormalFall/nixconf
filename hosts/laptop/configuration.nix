@@ -11,6 +11,7 @@ in
 {
   imports = [
     ./hardware-configuration.nix
+    (core + /kernel/xanmod)
     (core + /main-user)
     (core + /ly)
     (core + /wms/hyprland)
