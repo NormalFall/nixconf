@@ -33,7 +33,10 @@ with lib;
     };
   };
 
-  imports = [ ../../core/main-user ];
+  imports = [
+    ../../core/main-user
+    inputs.ssbm-nix.nixosModule
+  ];
 
   config = mkIf cfg.enable {
     environment.systemPackages = [
@@ -41,6 +44,8 @@ with lib;
       (mkIf cfg.osu pkgs.osu-lazer-bin)
       (mkIf cfg.lutris pkgs.lutris)
     ];
+
+    ssbm.gcc.rules.enable = cfg.slippi.enable;
 
     mainUser = {
       modules = [
