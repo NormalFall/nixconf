@@ -6,5 +6,6 @@
       pkgs.libreoffice-fresh
       pkgs.kdePackages.okular
     ];
+    virtualisation.vmware.host.enable = true;
   };
 }
