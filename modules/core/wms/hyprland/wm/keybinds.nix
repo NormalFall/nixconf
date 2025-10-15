@@ -1,7 +1,10 @@
 # This is imported within homeManager
 { pkgs, ... }:
 {
-  wayland.windowManager.hyprland.settings = {
+  wayland.windowManager.hyprland.settings = let
+    zoom_threshold = 1.7;
+    zoom_increment = 0.25;
+  in {
     bind = [
       #Apps
       "SUPER,T,exec,${pkgs.kitty}/bin/kitty"
@@ -24,6 +27,12 @@
       #ScreenShots
       ''ALT,S,exec,GRIMBLAST_EDITOR="${pkgs.swappy}/bin/swappy -f" ${pkgs.grimblast}/bin/grimblast edit screen --freeze''
       ''ALTSHIFT,S,exec,GRIMBLAST_EDITOR="${pkgs.swappy}/bin/swappy -f" ${pkgs.grimblast}/bin/grimblast edit area --freeze''
+
+      #Zoom
+      "SUPER, minus, exec, hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor -j | ${pkgs.jq}/bin/jq '(.float * ${builtins.toString (1 + zoom_increment)}) | if . < ${builtins.toString zoom_threshold} then ${builtins.toString zoom_threshold} else . end')"
+      "SUPER, equal, exec, hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor -j | ${pkgs.jq}/bin/jq '(.float * ${builtins.toString (1 - zoom_increment)}) | if . < ${builtins.toString zoom_threshold} then 1 else . end')"
+      "SUPERSHIFT, e, exec, hyprctl -q keyword cursor:zoom_factor 1"
+      "SUPER, e, exec, hyprctl -q keyword cursor:zoom_factor 1"
 
       #Audio
       ",XF86AudioLowerVolume,exec,${pkgs.pamixer}/bin/pamixer -d 5"
