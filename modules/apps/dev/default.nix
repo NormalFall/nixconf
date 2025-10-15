@@ -6,6 +6,7 @@ with lib;
     ./vscodium.nix
     ./android.nix
     ./embedded.nix
+    ./common-compilers.nix
   ];
 
   config = {
@@ -13,5 +14,6 @@ with lib;
     dev.vscodium.enable = mkDefault true;
     dev.android.enable = mkDefault true;
     dev.embedded.enable = mkDefault true;
+    dev.common-compilers.enable = mkDefault true;
   };
 }
