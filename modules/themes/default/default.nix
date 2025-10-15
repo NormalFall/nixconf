@@ -7,7 +7,7 @@
     ./kitty.nix
     ./hyprland
     ./niri.nix
-    ./nwg-drawer
+    ./walker
     ./waybar
     ./dunst.nix
     ./gtk.nix
@@ -15,7 +15,7 @@
   ];
 
   config = {
-    niri.extraKeybinds."Mod+R".action.spawn = [ "${pkgs.nwg-drawer}/bin/nwg-drawer" ];
-    hyprland.wm.extraKeybinds = [ "SUPER,R,exec,${pkgs.nwg-drawer}/bin/nwg-drawer" ];
+    niri.extraKeybinds."Mod+R".action.spawn = [ "${pkgs.netcat-openbsd}/bin/nc -U $XDG_RUNTIME_DIR/walker/walker.sock" ];
+    hyprland.wm.extraKeybinds = [ "SUPER,R,exec,${pkgs.netcat-openbsd}/bin/nc -U $XDG_RUNTIME_DIR/walker/walker.sock" ];
   };
 }
