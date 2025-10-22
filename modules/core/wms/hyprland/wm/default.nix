@@ -93,7 +93,12 @@ with lib;
 
         wayland.windowManager.hyprland = {
           enable = true;
-          systemd.enable = true;
+          systemd = {
+            variables = [ "--all" ];
+            extraCommands = [
+              "systemctl --user stop graphical-session.target && sleep 2 && systemctl --user start hyprland-session.target"
+            ];
+          };
 
           settings = {
             monitor = cfg.monitors;
