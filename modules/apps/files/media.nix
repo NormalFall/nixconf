@@ -28,7 +28,7 @@ with lib;
     environment.systemPackages =
       (
         if cfg.images.enable then
-          [ pkgs.gthumb ] ++ (if (cfg.images.editor && cfg.editors) then [ pkgs.gimp ] else [ ])
+          [ pkgs.gthumb ] ++ (if (cfg.images.editor && cfg.editors) then [ pkgs.gimp3-with-plugins ] else [ ])
         else
           [ ]
       )
