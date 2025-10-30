@@ -24,11 +24,15 @@ with lib;
 
   config = mkIf cfg.enable {
     programs.openvpn3.enable = true;
+    programs.nekoray = {
+      enable = true;
+      tunMode.enable = true;
+    };
+
     environment.systemPackages =
       with pkgs;
       [
         wireguard-tools
-        v2raya
       ]
       ++ (if cfg.mullvad then [ mullvad-closest mullvad-vpn ] else [ ])
       ++ (
