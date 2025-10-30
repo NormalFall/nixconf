@@ -7,7 +7,7 @@ pkgs.buildNpmPackage rec {
     owner = "vrtmrz";
     repo = "obsidian-livesync";
     rev = version;
-    hash = "sha256-TUbJRNgOOxRm+tVSSMIw54FGsx529ZJVCbmXp2MiLJQ=";
+    hash = "sha256-hKrYJRrxrPVDmUgm/JnanXgecAEutHRGwmjP7TdIySE=";
     fetchSubmodules = true;
     deepClone = true;
   };
